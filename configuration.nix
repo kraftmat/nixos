@@ -35,6 +35,10 @@
     wget
     fastfetch
   ];
+  
+  # ── Throne ───────────────────────────────────────────────────────────────────
+  programs.throne.enable = true;
+  programs.throne.tunMode.enable = true;	
 
   # ── Nix ───────────────────────────────────────────────────────────────────
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -61,7 +65,7 @@
   services.displayManager.ly = {
     enable = true;
     settings = {
-      animation = "doom";
+      animation = "matrix";
       bigclock  = true;
     };
   };
