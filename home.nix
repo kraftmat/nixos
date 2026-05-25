@@ -32,6 +32,7 @@
 
     floorp-bin
     vesktop
+    gh
 
     polkit_gnome
     gvfs
