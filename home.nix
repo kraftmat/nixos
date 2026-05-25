@@ -18,6 +18,8 @@
     playerctl
     swayosd
     cliphist
+    qt6ct
+    qt5ct
 
     nautilus
     gnome-text-editor
