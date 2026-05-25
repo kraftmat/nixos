@@ -25,6 +25,10 @@
     shell        = pkgs.fish;
     extraGroups  = [ "networkmanager" "wheel" "input" "render" "video" "audio" ];
   };
+  
+  systemd.tmpfiles.rules = [
+    "d /etc/nixos/kraftmat 0770 root:kraftmat - -"
+  ];
 
   # ── Системные пакеты ──────────────────────────────────────────────────────
   nixpkgs.config.allowUnfree = true;
@@ -37,8 +41,10 @@
   ];
   
   # ── Throne ───────────────────────────────────────────────────────────────────
-  programs.throne.enable = true;
-  programs.throne.tunMode.enable = true;	
+  programs.throne = {
+    enable = true;
+    tunMode.enable = true;
+  };
 
   # ── Nix ───────────────────────────────────────────────────────────────────
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

@@ -31,6 +31,8 @@
     evince
     gnome-font-viewer
     seahorse
+    bibata-cursors
+    morewaita-icon-theme
 
     floorp-bin
     vesktop
@@ -55,12 +57,18 @@
       ll  = "ls -lah";
     };
   };
-  # ── Qt  ───────────────────────────────────────────────────────────────────
+  # ── Qt and GTK  ───────────────────────────────────────────────────────────
   qt = {
     enable = true;
     platformTheme.name = "qtct";
   };
 
+gtk = {
+    enable = true;
+    iconTheme = {
+      name = "morewaita-icon-theme"; 
+    };
+  };
   # ── Kitty ─────────────────────────────────────────────────────────────────
   programs.kitty = {
     enable = true;
@@ -92,7 +100,10 @@
     config-notification {
         disable-failed
     }
-
+    cursor {
+		xcursor-theme "Bibata-Modern-Classic"
+        xcursor-size 24
+}
     gestures {
         hot-corners {
             off
