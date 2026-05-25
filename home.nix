@@ -18,8 +18,8 @@
     playerctl
     swayosd
     cliphist
-    qt6ct
-    qt5ct
+    kdePackages.qt6ct
+    libsForQt5.qt5ct
 
     nautilus
     gnome-text-editor
