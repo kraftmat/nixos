@@ -6,8 +6,31 @@
   ];
 
   # ── Загрузчик ─────────────────────────────────────────────────────────────
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/vda";
+  boot.loader.systemd-boot.enable      = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint     = "/boot";
+
+  # ── Файловая система ───────────────────────────────────────────────────────
+  boot.supportedFilesystems = [ "btrfs" ];
+
+  # ── Ядро / AMD ────────────────────────────────────────────────────────────
+  boot.kernelParams = [ "amd_pstate=active" ];
+  boot.initrd.kernelModules = [ "amdgpu" ];
+
+  hardware.cpu.amd.updateMicrocode = true;
+
+  hardware.graphics = {
+    enable      = true;
+    enable32Bit = true;
+  };
+
+  services.xserver.videoDrivers = [ "amdgpu" ];
+
+  # ── Zram ──────────────────────────────────────────────────────────────────
+  zramSwap = {
+    enable    = true;
+    algorithm = "zstd";
+  };
 
   # ── Сеть ──────────────────────────────────────────────────────────────────
   networking.hostName = "kraftmat-pc";
@@ -25,10 +48,6 @@
     shell        = pkgs.fish;
     extraGroups  = [ "networkmanager" "wheel" "input" "render" "video" "audio" ];
   };
-  
-  systemd.tmpfiles.rules = [
-    "d /etc/nixos/kraftmat 0770 root:kraftmat - -"
-  ];
 
   # ── Системные пакеты ──────────────────────────────────────────────────────
   nixpkgs.config.allowUnfree = true;
@@ -37,14 +56,7 @@
     micro
     git
     wget
-    fastfetch
   ];
-  
-  # ── Throne ───────────────────────────────────────────────────────────────────
-  programs.throne = {
-    enable = true;
-    tunMode.enable = true;
-  };
 
   # ── Nix ───────────────────────────────────────────────────────────────────
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -71,7 +83,7 @@
   services.displayManager.ly = {
     enable = true;
     settings = {
-      animation = "matrix";
+      animation = "doom";
       bigclock  = true;
     };
   };
