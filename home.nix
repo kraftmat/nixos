@@ -37,7 +37,10 @@
     floorp-bin
     vesktop
     gh
-    fjordlauncher.packages.${pkgs.system}.fjordlauncher
+    steam
+    litrus
+    protonup-qt
+   # fjordlauncher.packages.${pkgs.system}.fjordlauncher
 
     polkit_gnome
     gvfs
