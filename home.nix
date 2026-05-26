@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, fjordlauncher, ... }:
 
 {
   imports = [
@@ -37,6 +37,7 @@
     floorp-bin
     vesktop
     gh
+    fjordlauncher.packages.${pkgs.system}.fjordlauncher
 
     polkit_gnome
     gvfs
