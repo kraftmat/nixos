@@ -72,11 +72,16 @@
   ];
 
   
-  # ── Throne ───────────────────────────────────────────────────────────────────
+  # ── Throne ────────────────────────────────────────────────────────────────
   programs.throne = {
     enable = true;
     tunMode.enable = true;
   };
+  # ── fish  ─────────────────────────────────────────────────────────────────
+  programs.fish.enable = true;
+
+  # ── niri  ─────────────────────────────────────────────────────────────────
+  programs.niri.enable = true;
   
   # ── Nix ───────────────────────────────────────────────────────────────────
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -89,9 +94,6 @@
     wireplumber.enable = true;
   };
   security.rtkit.enable = true;
-
-  # ── Wayland / niri ────────────────────────────────────────────────────────
-  programs.niri.enable = true;
 
   xdg.portal = {
     enable        = true;
@@ -107,9 +109,6 @@
       bigclock  = true;
     };
   };
-
-  # ── Fish ──────────────────────────────────────────────────────────────────
-  programs.fish.enable = true;
 
   # ── SSH ───────────────────────────────────────────────────────────────────
   services.openssh.enable = true;

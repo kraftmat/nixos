@@ -47,7 +47,7 @@
     mangoLayoutRadiusOverride = -1;
     mangoLayoutBorderSize = -1;
     use24HourClock = true;
-    showSeconds = false;
+    showSeconds = true;
     padHours12Hour = false;
     useFahrenheit = false;
     windSpeedUnit = "kmh";
