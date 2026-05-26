@@ -20,6 +20,8 @@
     cliphist
     kdePackages.qt6ct
     libsForQt5.qt5ct
+    
+
 
     nautilus
     gnome-text-editor
@@ -73,6 +75,7 @@
         "cpu"
         "gpu"
         "memory"
+        "disk"
         "break"
         "colors"
       ];
@@ -108,27 +111,14 @@ gtk = {
   # ── Kitty ─────────────────────────────────────────────────────────────────
   programs.kitty = {
     enable = true;
-
-    shellIntegration.enableFishIntegration = true;
-
     settings = {
-      font_family             = "JetBrainsMono Nerd Font";
-      font_size               = "12.0";
-      background_opacity      = "0.92";
-      window_padding_width    = 8;
-      hide_window_decorations = "yes";
-      cursor_shape            = "beam";
-      cursor_blink_interval   = "0.5";
-      tab_bar_style           = "powerline";
-      repaint_delay           = 10;
-      sync_to_monitor         = "yes";
+      dynamic_background_opacity = true;
+      window_padding_width = 15;
     };
-  };
-
-  fonts.fontconfig.enable = true;
-
-  home.sessionVariables = {
-    SHELL = "${pkgs.fish}/bin/fish";
+    extraConfig = ''
+      include dank-theme.conf
+      include dank-tabs.conf
+    '';
   };
 
   # ── CursorX11 ─────────────────────────────────────────────────────────────
