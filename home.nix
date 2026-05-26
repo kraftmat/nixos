@@ -10,10 +10,7 @@
     niri
     xwayland-satellite
 
-    fuzzel
-    swaylock
     wl-clipboard
-    grim slurp
     brightnessctl
     playerctl
     swayosd
@@ -48,6 +45,12 @@
     gvfs
     nerd-fonts.jetbrains-mono
   ];
+
+  # ── swayosd  ──────────────────────────────────────────────────────────────
+  services.swayosd = {
+    enable = true;
+  };
+  
   # ── EF ────────────────────────────────────────────────────────────────────
   services.easyeffects.enable = true;
   xdg.configFile."easyeffects/output/AutoEq.json".source = ./EF.json; 
@@ -205,7 +208,6 @@ gtk = {
     spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
     spawn-at-startup "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
     spawn-at-startup "dms" "run"
-    spawn-at-startup "swayosd-server"
 
     environment {
         XDG_CURRENT_DESKTOP "niri"
@@ -281,24 +283,10 @@ gtk = {
         open-floating false
     }
     window-rule {
-        match app-id="Alacritty"
-        match app-id="kitty"
-        draw-border-with-background false
-    }
-    window-rule {
-        match app-id=r#"firefox$"# title="^Picture-in-Picture$"
-        match app-id="zoom"
-        open-floating true
-    }
-    window-rule {
         geometry-corner-radius 4
         clip-to-geometry true
     }
-    window-rule {
-        match title="Counter-Strike 2"
-        open-fullscreen true
-    }
-
+   
     binds {
         Mod+Tab repeat=false { toggle-overview; }
         Mod+Shift+B { show-hotkey-overlay; }
@@ -436,9 +424,9 @@ gtk = {
         Mod+W { spawn "floorp"; }
         Mod+E { spawn "nautilus"; }
         Mod+Shift+D { spawn "vesktop"; }
-        Pause { spawn-sh "playerctl play-pause"; }
-        MouseBack { spawn "swayosd-client" "--input-volume" "mute-toggle"; }
-        Shift+MouseBack { spawn "swayosd-client" "--input-volume" "mute-toggle"; }
+        Pause { spawn "swayosd-client" "--playerctl" "play-pause"; }
+        MouseBack { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && swayosd-client --input-volume mute-toggle"; }
+        Shift+MouseBack { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && swayosd-client --input-volume mute-toggle"; }
 
         Mod+Ctrl+R { reset-window-height; }
         Mod+Ctrl+F { expand-column-to-available-width; }
