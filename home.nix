@@ -47,23 +47,8 @@
     nerd-fonts.jetbrains-mono
   ];
   # ── EF ────────────────────────────────────────────────────────────────────
- services.easyeffects.enable = true;
- 
-   xdg.configFile."easyeffects/output/AutoEq.json".text = builtins.toJSON {
-     "output" = {
-       "blocklist" = [ ];
-       "equalizer" = {
-         "balance" = 0.0;
-         "bypass" = false;
-         "input-gain" = -4.5;
-         "output-gain" = 0.0;
-         "plugins-order" = [ "equalizer" ];
-       };
-       "plugins-order" = [ "equalizer" ];
-     };
-   };
- 
-   xdg.configFile."assets/easyeffects/jbl_tune_110.txt".source = ./EF.txt;
+  services.easyeffects.enable = true;
+  xdg.configFile."easyeffects/output/AutoEq.json".source = ./EF.json; 
 
   # ── fetch ───────────────────────────────────────────────────────────────── 	
   programs.fastfetch = {
@@ -145,6 +130,15 @@ gtk = {
   home.sessionVariables = {
     SHELL = "${pkgs.fish}/bin/fish";
   };
+
+  # ── CursorX11 ─────────────────────────────────────────────────────────────
+  home.pointerCursor = {
+      gtk.enable = true;
+      x11.enable = true;
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic"; 
+      size = 24;
+    };
 
   # ── Niri ──────────────────────────────────────────────────────────────────
   xdg.configFile."niri/config.kdl".text = ''
