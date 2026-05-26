@@ -56,8 +56,16 @@
     micro
     git
     wget
+    fastfetch
   ];
 
+  
+  # ── Throne ───────────────────────────────────────────────────────────────────
+  programs.throne = {
+    enable = true;
+    tunMode.enable = true;
+  };
+  
   # ── Nix ───────────────────────────────────────────────────────────────────
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

@@ -5,25 +5,41 @@
 
 {
   imports =
-    [ (modulesPath + "/profiles/qemu-guest.nix")
+    [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/40797428-7860-4ae7-9186-d35c161d5d13";
-      fsType = "ext4";
+    { device = "/dev/disk/by-uuid/1159e402-4167-4197-b414-08be8f35dfff";
+      fsType = "btrfs";
+      options = [ "subvol=@" "compress=zstd" "noatime" ];
     };
 
-  fileSystems."/mnt/share" =
-    { device = "share";
-      fsType = "virtiofs";
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/1159e402-4167-4197-b414-08be8f35dfff";
+      fsType = "btrfs";
+      options = [ "subvol=@home" "compress=zstd" "noatime" ];
+    };
+
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-uuid/1159e402-4167-4197-b414-08be8f35dfff";
+      fsType = "btrfs";
+      options = [ "subvol=@nix" "compress=zstd" "noatime"  ];
+    };
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/5FAB-A9C0";
+      fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
     };
 
   swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
+

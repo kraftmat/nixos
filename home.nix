@@ -1,4 +1,4 @@
-{ config, pkgs, fjordlauncher, ... }:
+{ config, pkgs, inputs, fjordlauncher, ... }:
 
 {
   imports = [
@@ -34,18 +34,65 @@
     bibata-cursors
     morewaita-icon-theme
 
-    floorp-bin
     vesktop
     gh
     steam
-    litrus
+    #lutris
     protonup-qt
-   # fjordlauncher.packages.${pkgs.system}.fjordlauncher
+    fjordlauncher.packages.${pkgs.system}.fjordlauncher
+    floorp-bin
 
     polkit_gnome
     gvfs
     nerd-fonts.jetbrains-mono
   ];
+  # ── EF ────────────────────────────────────────────────────────────────────
+ services.easyeffects.enable = true;
+ 
+   xdg.configFile."easyeffects/output/AutoEq.json".text = builtins.toJSON {
+     "output" = {
+       "blocklist" = [ ];
+       "equalizer" = {
+         "balance" = 0.0;
+         "bypass" = false;
+         "input-gain" = -4.5;
+         "output-gain" = 0.0;
+         "plugins-order" = [ "equalizer" ];
+       };
+       "plugins-order" = [ "equalizer" ];
+     };
+   };
+ 
+   xdg.configFile."assets/easyeffects/jbl_tune_110.txt".source = ./EF.txt;
+
+  # ── fetch ───────────────────────────────────────────────────────────────── 	
+  programs.fastfetch = {
+    enable = true;
+    settings = {
+      logo = {
+        source = "nixos";
+        padding = {
+          right = 1;
+        };
+      };
+      modules = [
+        "title"
+        "separator"
+        "os"
+        "host"
+        "kernel"
+        "uptime"
+        "packages"
+        "shell"
+        "terminal"
+        "cpu"
+        "gpu"
+        "memory"
+        "break"
+        "colors"
+      ];
+    };
+  };
 
   # ── Fish ──────────────────────────────────────────────────────────────────
   programs.fish = {
@@ -104,6 +151,9 @@ gtk = {
     config-notification {
         disable-failed
     }
+    output "DP-3" {
+        mode "1920x1080@144.000"
+        }
     cursor {
 		xcursor-theme "Bibata-Modern-Classic"
         xcursor-size 24
