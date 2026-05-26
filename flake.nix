@@ -45,7 +45,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = { inherit inputs dms dms-plugin-registry fjordlauncher; };
-
+			
             users.kraftmat = { imports = [
               dms.homeModules.dank-material-shell
               dms-plugin-registry.modules.default
