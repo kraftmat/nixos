@@ -4,6 +4,7 @@
   imports = [
     ./cfg/dms.nix
     ./cfg/niri.nix
+    ./cfg/qtct.nix
   ];
 
   # ── Пакеты ────────────────────────────────────────────────────────────────
@@ -14,8 +15,6 @@
       pkgs.playerctl
       pkgs.swayosd
       pkgs.cliphist
-      pkgs.kdePackages.qt6ct
-      pkgs.libsForQt5.qt5ct
       pkgs.yt-dlp
       pkgs.btop
       pkgs.nautilus   
@@ -96,13 +95,6 @@
       ll  = "ls -lah";
     };
   };
-  # ── Qt and GTK  ───────────────────────────────────────────────────────────
-  qt = {
-    enable = true;
-    platformTheme.name = "qtct";
-  };
-
-
   # ── Kitty ─────────────────────────────────────────────────────────────────
   programs.kitty = {
     enable = true;
