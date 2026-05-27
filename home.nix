@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, fjordlauncher, ... }:
+{ config, pkgs, pkgs-stable, inputs, fjordlauncher, ... }:
 
 {
   imports = [
@@ -7,43 +7,41 @@
   ];
 
   # ── Пакеты ────────────────────────────────────────────────────────────────
-  home.packages = with pkgs; [
-    xwayland-satellite
-    wl-clipboard
-    brightnessctl
-    playerctl
-    swayosd
-    cliphist
-    kdePackages.qt6ct
-    libsForQt5.qt5ct
-    yt-dlp
-    btop
-    
-
-
-    nautilus   
-    showtime
-    gnome-clocks
-    gnome-system-monitor      
-    gnome-font-viewer
-    bibata-cursors
-    morewaita-icon-theme
-
-    vesktop
-    gh
-    steam
-    #lutris
-    gamemode
-    mangohud
-    protonup-qt
-    fjordlauncher.packages.${pkgs.system}.fjordlauncher
-    floorp-bin
-
-    polkit_gnome
-    gvfs
-    nerd-fonts.jetbrains-mono
-  ];
-
+  home.packages = [
+      pkgs.xwayland-satellite
+      pkgs.wl-clipboard
+      pkgs.brightnessctl
+      pkgs.playerctl
+      pkgs.swayosd
+      pkgs.cliphist
+      pkgs.kdePackages.qt6ct
+      pkgs.libsForQt5.qt5ct
+      pkgs.yt-dlp
+      pkgs.btop
+      pkgs.nautilus   
+      pkgs.showtime
+      pkgs.gnome-clocks
+      pkgs.gnome-system-monitor      
+      pkgs.gnome-font-viewer
+      pkgs.bibata-cursors
+      pkgs.morewaita-icon-theme
+      pkgs.vesktop
+      pkgs.gh
+      pkgs.steam
+      pkgs.gamemode
+      pkgs.mangohud
+      pkgs.protonup-qt
+      pkgs.floorp-bin
+      pkgs.polkit_gnome
+      pkgs.gvfs
+      pkgs.nerd-fonts.jetbrains-mono
+      pkgs.adw-gtk3
+      
+      inputs.fjordlauncher.packages.${pkgs.system}.fjordlauncher
+  
+      pkgs-stable.lutris
+    ];
+  
   # ── swayosd  ──────────────────────────────────────────────────────────────
   services.swayosd = {
     enable = true;
@@ -107,6 +105,7 @@
     enable = true;
     platformTheme.name = "qtct";
   };
+
 
   # ── Kitty ─────────────────────────────────────────────────────────────────
   programs.kitty = {

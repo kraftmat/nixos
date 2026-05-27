@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -23,7 +24,7 @@
     fjordlauncher.url = "github:unmojang/FjordLauncher";
   };
 
-  outputs = { nixpkgs, home-manager, dms, dms-plugin-registry, fjordlauncher, nur, ... } @ inputs: {
+  outputs = { nixpkgs, nixpkgs-stable, home-manager, dms, dms-plugin-registry, fjordlauncher, nur, ... } @ inputs: {
     nixosConfigurations.kraftmat = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs dms dms-plugin-registry fjordlauncher; };
@@ -32,7 +33,14 @@
         home-manager.nixosModules.home-manager
 
         {
-          nixpkgs.overlays = [ nur.overlays.default ];    
+          nixpkgs.overlays = [ 
+            nur.overlays.default 
+            (final: prev: {
+              openldap = prev.openldap.overrideAttrs (oldAttrs: {
+                doCheck = false;
+              });
+            })
+          ];    
         }
 
         ({ pkgs, ... }: {
@@ -44,8 +52,14 @@
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            extraSpecialArgs = { inherit inputs dms dms-plugin-registry fjordlauncher; };
-			
+            extraSpecialArgs = { 
+              inherit inputs dms dms-plugin-registry fjordlauncher; 
+              pkgs-stable = import nixpkgs-stable {
+                system = "x86_64-linux";
+                config.allowUnfree = true;
+              };
+            };
+
             users.kraftmat = { imports = [
               dms.homeModules.dank-material-shell
               dms-plugin-registry.modules.default
@@ -57,3 +71,4 @@
     };
   };
 }
+
