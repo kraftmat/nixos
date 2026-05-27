@@ -81,10 +81,6 @@
     };
   };
 
-  # ── Steam  ────────────────────────────────────────────────────────────────
-  home.sessionVariables = {
-    STEAM_COMPAT_INVOKER = "PROTON_ENABLE_WAYLAND=1 gamemoderun mangohud";
-  };
 
   # ── Fish ──────────────────────────────────────────────────────────────────
   programs.fish = {
@@ -95,8 +91,8 @@
     '';
 
     shellAliases = {
-      nrs = "sudo nixos-rebuild switch --flake /etc/nixos#kraftmat";
-      nrb = "sudo nixos-rebuild boot --flake /etc/nixos#kraftmat";
+      build-switch = "sudo nixos-rebuild switch --flake /etc/nixos#kraftmat";
+      build-boot = "sudo nixos-rebuild boot --flake /etc/nixos#kraftmat";
       ll  = "ls -lah";
     };
   };
