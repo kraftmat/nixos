@@ -1,5 +1,5 @@
 {
-  description = "kraftmat";
+  description = "kraftmat-laptop";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -26,24 +26,28 @@
   };
 
   outputs = { nixpkgs, nixpkgs-stable, home-manager, dms, dms-plugin-registry, fjordlauncher, nur, ... } @ inputs: {
-    nixosConfigurations.kraftmat = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.kraftmat-laptop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
         inherit inputs dms dms-plugin-registry fjordlauncher;
-        hostName = "kraftmat-pc";
+        hostName = "kraftmat-laptop";
         hostConfig = {
-          kernelParams  = [ "amd_pstate=active" "amdgpu.ppfeaturemask=0xffffffff" ];
-          initrdModules = [ "amdgpu" ];
-          videoDrivers  = [ "amdgpu" ];
-          intelCpu      = false;
-          enableLact    = true;
-          enableTlp     = false;
-          nvidia        = null;
+          kernelParams  = [ "intel_pstate=active" ];
+          initrdModules = [ "i915" ];
+          videoDrivers  = [ "nvidia" ];
+          intelCpu      = true;
+          enableLact    = false;
+          enableTlp     = true;
+          nvidia = {
+            # заменить на с ноута: lspci | grep -E "VGA|3D"  (hex -> decimal)
+            intelBusId  = "PCI:0:2:0";
+            nvidiaBusId = "PCI:1:0:0";
+          };
         };
       };
       modules = [
         ./hardware-configuration.nix
-        ./configuration.nix
+        ../configuration.nix
         home-manager.nixosModules.home-manager
 
         {
@@ -68,7 +72,7 @@
             useUserPackages = true;
             extraSpecialArgs = {
               inherit inputs dms dms-plugin-registry fjordlauncher;
-              hostName = "kraftmat-pc";
+              hostName = "kraftmat-laptop";
               pkgs-stable = import nixpkgs-stable {
                 system = "x86_64-linux";
                 config.allowUnfree = true;
@@ -78,7 +82,7 @@
             users.kraftmat = { imports = [
               dms.homeModules.dank-material-shell
               dms-plugin-registry.modules.default
-              ./home.nix
+              ../home.nix
             ]; };
           };
         })
