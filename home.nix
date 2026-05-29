@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-stable, inputs, fjordlauncher, hostName, ... }:
+{ config, pkgs, lib, pkgs-stable, inputs, fjordlauncher, hostName, flakePath, hostConfig, ... }:
 
 {
   imports = [
@@ -39,6 +39,8 @@
 
     pkgs-stable.lutris
     throne
+  ] ++ lib.optionals hostConfig.enableLact [ 
+  pkgs.lact 
   ];
 
   # ── swayosd ───────────────────────────────────────────────────────────────
@@ -83,8 +85,8 @@
     '';
 
     shellAliases = {
-      build-switch = "sudo nixos-rebuild switch --flake /etc/nixos#${hostName}";
-      build-boot   = "sudo nixos-rebuild boot   --flake /etc/nixos#${hostName}";
+      build-switch = "sudo nixos-rebuild switch --flake ${flakePath}";
+      build-boot   = "sudo nixos-rebuild boot   --flake ${flakePath}";
       ll           = "ls -lah";
     };
   };

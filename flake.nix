@@ -26,11 +26,11 @@
   };
 
   outputs = { nixpkgs, nixpkgs-stable, home-manager, dms, dms-plugin-registry, fjordlauncher, nur, ... } @ inputs: {
-    nixosConfigurations.kraftmat = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.kraftmat-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
         inherit inputs dms dms-plugin-registry fjordlauncher;
-        hostName = "kraftmat-pc";
+        hostName   = "kraftmat-pc";
         hostConfig = {
           kernelParams  = [ "amd_pstate=active" "amdgpu.ppfeaturemask=0xffffffff" ];
           initrdModules = [ "amdgpu" ];
@@ -59,7 +59,7 @@
 
         ({ pkgs, ... }: {
           nix.settings = {
-            substituters      = [ "https://cache.nixos.org" "https://unmojang.cachix.org" ];
+            substituters        = [ "https://cache.nixos.org" "https://unmojang.cachix.org" ];
             trusted-public-keys = [ "unmojang.cachix.org-1:OfHnbBNduZ6Smx9oNbLFbYyvOWSoxb2uPcnXPj4EDQY=" ];
           };
 
@@ -68,7 +68,11 @@
             useUserPackages = true;
             extraSpecialArgs = {
               inherit inputs dms dms-plugin-registry fjordlauncher;
-              hostName = "kraftmat-pc";
+              hostName  = "kraftmat-pc";
+              flakePath = "/etc/nixos#kraftmat-pc";
+              hostConfig = {
+                enableLact = true;
+              };
               pkgs-stable = import nixpkgs-stable {
                 system = "x86_64-linux";
                 config.allowUnfree = true;

@@ -30,7 +30,7 @@
       system = "x86_64-linux";
       specialArgs = {
         inherit inputs dms dms-plugin-registry fjordlauncher;
-        hostName = "kraftmat-laptop";
+        hostName   = "kraftmat-laptop";
         hostConfig = {
           kernelParams  = [ "intel_pstate=active" ];
           initrdModules = [ "i915" ];
@@ -39,7 +39,7 @@
           enableLact    = false;
           enableTlp     = true;
           nvidia = {
-            # заменить на с ноута: lspci | grep -E "VGA|3D"  (hex -> decimal)
+            # lspci | grep -E "VGA|3D"  (hex -> decimal)
             intelBusId  = "PCI:0:2:0";
             nvidiaBusId = "PCI:1:0:0";
           };
@@ -63,7 +63,7 @@
 
         ({ pkgs, ... }: {
           nix.settings = {
-            substituters      = [ "https://cache.nixos.org" "https://unmojang.cachix.org" ];
+            substituters        = [ "https://cache.nixos.org" "https://unmojang.cachix.org" ];
             trusted-public-keys = [ "unmojang.cachix.org-1:OfHnbBNduZ6Smx9oNbLFbYyvOWSoxb2uPcnXPj4EDQY=" ];
           };
 
@@ -72,7 +72,11 @@
             useUserPackages = true;
             extraSpecialArgs = {
               inherit inputs dms dms-plugin-registry fjordlauncher;
-              hostName = "kraftmat-laptop";
+              hostName  = "kraftmat-laptop";
+              flakePath = "/etc/nixos/laptop#kraftmat-laptop";
+              hostConfig = {
+                enableLact = false;
+              };
               pkgs-stable = import nixpkgs-stable {
                 system = "x86_64-linux";
                 config.allowUnfree = true;

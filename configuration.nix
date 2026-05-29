@@ -1,6 +1,7 @@
 { config, pkgs, lib, inputs, hostName, hostConfig, ... }:
 
 {
+
   # ── Загрузчик ─────────────────────────────────────────────────────────────
   boot.loader.systemd-boot.enable      = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -24,7 +25,7 @@
 
   services.xserver.videoDrivers = hostConfig.videoDrivers;
 
-  # NVIDIA Optimus laptop
+  # NVIDIA Optimus (только для ноута)
   hardware.nvidia = lib.mkIf (hostConfig.nvidia != null) {
     modesetting.enable = true;
     powerManagement = {
@@ -44,7 +45,7 @@
     };
   };
 
-  # LACT AMD GPU PC
+  # LACT — управление AMD GPU (только для ПК)
   systemd.services.lact = lib.mkIf hostConfig.enableLact {
     description = "AMDGPU Control Daemon";
     enable      = true;
@@ -54,7 +55,7 @@
     wantedBy = [ "multi-user.target" ];
   };
 
-  # TLP laptop
+  # TLP — управление питанием (только для ноута)
   services.tlp = lib.mkIf hostConfig.enableTlp {
     enable = true;
     settings = {
