@@ -128,7 +128,6 @@
     git
     wget
     fastfetch
-    whoami
     nftables
     procps
     screen

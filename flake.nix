@@ -59,7 +59,7 @@
 
         ({ pkgs, ... }: {
           nix.settings = {
-            substituters        = [ "https://cache.nixos.org" "https://unmojang.cachix.org" ];
+            substituters        = [ "https://cache.nixos.org" ];
             trusted-public-keys = [ "unmojang.cachix.org-1:OfHnbBNduZ6Smx9oNbLFbYyvOWSoxb2uPcnXPj4EDQY=" ];
           };
 

@@ -34,6 +34,9 @@
     gvfs
     nerd-fonts.jetbrains-mono
     adw-gtk3
+    gnumake
+    cmake
+    sx
 
     inputs.fjordlauncher.packages.${pkgs.system}.fjordlauncher
 
