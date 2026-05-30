@@ -31,6 +31,15 @@
             }
             numlock
         }
+        touchpad {
+                
+                tap
+                dwt
+                disabled-on-external-mouse
+                drag-lock
+                //natural-scroll
+               
+            }
     }
 
     layout {
