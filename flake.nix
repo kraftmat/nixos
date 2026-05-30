@@ -39,6 +39,8 @@
           enableLact    = true;
           enableTlp     = false;
           nvidia        = null;
+          monitor = "DP-1";
+          refreshRate = 144.0;
         };
       };
       modules = [

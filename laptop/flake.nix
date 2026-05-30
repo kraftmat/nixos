@@ -38,6 +38,8 @@
           intelCpu      = true;
           enableLact    = false;
           enableTlp     = true;
+          monitor = "eDP-1";
+          refreshRate = 165.0;
           nvidia = {
             intelBusId  = "PCI:0:2:0";
             nvidiaBusId = "PCI:1:0:0";

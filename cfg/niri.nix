@@ -1,13 +1,14 @@
-{ config, pkgs, ... }:
+{ config, pkgs, hostConfig, ... }:
 
 {
+  programs.niri.settings.outputs."${hostConfig.monitor}" = {
+    mode = { width = 1920; height = 1080; refresh = hostConfig.refreshRate; };
+    scale = 1.0;
+  };
   xdg.configFile."niri/config.kdl".text = ''
     config-notification {
         disable-failed
     }
-    output "DP-3" {
-        mode "1920x1080@144.000"
-        }
     cursor {
         xcursor-theme "Bibata-Modern-Classic"
         xcursor-size 24
