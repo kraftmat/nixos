@@ -38,7 +38,7 @@ xdg.configFile."niri/config.kdl".text = ''
                 dwt
                 disabled-on-external-mouse
                 drag-lock
-                //natural-scroll
+                natural-scroll
                
             }
     }

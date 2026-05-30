@@ -133,6 +133,8 @@
     screen
   ];
 
+  services.upower.enable = lib.mkIf hostConfig.isLaptop true;
+
   # ── Throne ────────────────────────────────────────────────────────────────
   programs.throne = {
     enable         = true;

@@ -39,6 +39,7 @@
           enableLact    = true;
           enableTlp     = false;
           nvidia        = null;
+          isLaptop 		= false;
         };
       };
       modules = [
