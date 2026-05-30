@@ -37,6 +37,7 @@
     gnumake
     cmake
     sx
+    obs-studio
 
     inputs.fjordlauncher.packages.${pkgs.system}.fjordlauncher
 
@@ -87,13 +88,12 @@
       set fish_greeting ""
     '';
 
-    shellAliases = {
-      build-switch = "sudo nixos-rebuild switch --flake ${flakePath}";
-      build-boot   = "sudo nixos-rebuild boot   --flake ${flakePath}";
-      ll           = "ls -lah";
-    };
+  shellAliases = {
+    build-switch = "sudo nixos-rebuild switch --flake ${flakePath} --option substituters 'https://cache.nixos.org'";
+    build-boot   = "sudo nixos-rebuild boot   --flake ${flakePath} --option substituters 'https://cache.nixos.org'";
+    ll           = "ls -lah";
+ 	 };
   };
-
   # ── Kitty ─────────────────────────────────────────────────────────────────
   programs.kitty = {
     enable   = true;
