@@ -38,6 +38,7 @@
     cmake
     sx
     obs-studio
+    qbittorrent
 
     inputs.fjordlauncher.packages.${pkgs.system}.fjordlauncher
 
