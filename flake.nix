@@ -39,8 +39,6 @@
           enableLact    = true;
           enableTlp     = false;
           nvidia        = null;
-          monitor = "DP-1";
-          refreshRate = 144.0;
         };
       };
       modules = [
@@ -74,6 +72,8 @@
               flakePath = "/etc/nixos#kraftmat-pc";
               hostConfig = {
                 enableLact = true;
+                monitor = "DP-3";
+                mode    = "1920x1080@144";
               };
               pkgs-stable = import nixpkgs-stable {
                 system = "x86_64-linux";

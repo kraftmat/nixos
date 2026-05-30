@@ -1,11 +1,11 @@
 { config, pkgs, hostConfig, ... }:
 
 {
-  programs.niri.settings.outputs."${hostConfig.monitor}" = {
-    mode = { width = 1920; height = 1080; refresh = hostConfig.refreshRate; };
-    scale = 1.0;
-  };
-  xdg.configFile."niri/config.kdl".text = ''
+xdg.configFile."niri/config.kdl".text = ''
+  output "${hostConfig.monitor}" {
+      mode "${hostConfig.mode}"
+      scale 1.0
+  }
     config-notification {
         disable-failed
     }

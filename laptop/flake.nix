@@ -77,6 +77,8 @@
               flakePath = "/etc/nixos/laptop#kraftmat-laptop";
               hostConfig = {
                 enableLact = false;
+                monitor = "eDP-1";
+                mode    = "1920x1080@165";
               };
               pkgs-stable = import nixpkgs-stable {
                 system = "x86_64-linux";
