@@ -485,6 +485,10 @@
             "id" = "keyboard_layout_name";
             "enabled" = true;
           }
+          {
+            "id" = "battery";
+            "enabled" = true;
+          }
         ];
         "spacing" = 0;
         "innerPadding" = 4;
