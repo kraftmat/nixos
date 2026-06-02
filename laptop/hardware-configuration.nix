@@ -16,25 +16,25 @@
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/6500df5e-9a01-4dc4-a0d7-3996cf997de6";
       fsType = "btrfs";
-      options = [ "subvol=@" "compress=zstd" "noatime" ];
+      options = [ "subvol=@" "compress=zstd" "noatime" "ssd" "discard=async" ];
     };
 
   fileSystems."/home" =
     { device = "/dev/disk/by-uuid/6500df5e-9a01-4dc4-a0d7-3996cf997de6";
       fsType = "btrfs";
-      options = [ "subvol=@home" "compress=zstd" "noatime" ];
+      options = [ "subvol=@home" "compress=zstd" "noatime" "ssd" "discard=async" ];
     };
 
   fileSystems."/nix" =
     { device = "/dev/disk/by-uuid/6500df5e-9a01-4dc4-a0d7-3996cf997de6";
       fsType = "btrfs";
-      options = [ "subvol=@nix" "compress=zstd" "noatime" ];
+      options = [ "subvol=@nix" "compress=zstd" "noatime" "ssd" "discard=async" ];
     };
 
   fileSystems."/log" =
     { device = "/dev/disk/by-uuid/6500df5e-9a01-4dc4-a0d7-3996cf997de6";
       fsType = "btrfs";
-      options = [ "subvol=@log" "compress=zstd" "noatime" ];
+      options = [ "subvol=@log" "compress=zstd" "noatime" "ssd" "discard=async" ];
     };
 
   fileSystems."/boot" =

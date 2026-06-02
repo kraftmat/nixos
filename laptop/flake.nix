@@ -49,7 +49,7 @@
         ./hardware-configuration.nix
         ../configuration.nix
         home-manager.nixosModules.home-manager
-
+        
         {
           nixpkgs.overlays = [
             nur.overlays.default

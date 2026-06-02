@@ -39,10 +39,12 @@
     sx
     obs-studio
     qbittorrent
+    lutris
+    wine
+    deadlock-mod-manager
 
     inputs.fjordlauncher.packages.${pkgs.system}.fjordlauncher
 
-    pkgs-stable.lutris
     throne
   ] ++ lib.optionals hostConfig.enableLact [ 
   pkgs.lact 
