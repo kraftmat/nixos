@@ -150,6 +150,27 @@
   # ── Nix ───────────────────────────────────────────────────────────────────
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # ── Snapper  ──────────────────────────────────────────────────────────────
+  services.snapper = {
+    snapshotInterval = "hourly";
+    cleanupInterval  = "1d";
+    configs.home = {
+      SUBVOLUME        = "/home";
+      ALLOW_USERS      = [ "kraftmat" ];
+      TIMELINE_CREATE  = true;
+      TIMELINE_CLEANUP = true;
+      TIMELINE_MIN_AGE    = "1800";
+      TIMELINE_LIMIT_HOURLY  = "5";
+      TIMELINE_LIMIT_DAILY   = "7";
+      TIMELINE_LIMIT_WEEKLY  = "0";
+      TIMELINE_LIMIT_MONTHLY = "0";
+      TIMELINE_LIMIT_YEARLY  = "0";
+    };
+  };
+
+  systemd.tmpfiles.rules = [
+    "d /home/.snapshots 0750 root kraftmat -"
+  ];
   # ── Звук ──────────────────────────────────────────────────────────────────
   services.pipewire = {
     enable             = true;

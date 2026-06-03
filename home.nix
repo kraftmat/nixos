@@ -42,6 +42,7 @@
     lutris
     wine
     deadlock-mod-manager
+    materialgram
 
     inputs.fjordlauncher.packages.${pkgs.system}.fjordlauncher
 
