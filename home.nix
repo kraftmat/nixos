@@ -43,6 +43,8 @@
     wine
     deadlock-mod-manager
     materialgram
+    amberol
+    loupe
 
     inputs.fjordlauncher.packages.${pkgs.system}.fjordlauncher
 
