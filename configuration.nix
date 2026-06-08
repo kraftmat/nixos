@@ -131,6 +131,7 @@
     nftables
     procps
     screen
+    ffmpeg
   ];
 
   services.upower.enable = lib.mkIf hostConfig.isLaptop true;

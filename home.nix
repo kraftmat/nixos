@@ -45,6 +45,8 @@
     materialgram
     amberol
     loupe
+    thunderbird
+    bottles
 
     inputs.fjordlauncher.packages.${pkgs.system}.fjordlauncher
 
