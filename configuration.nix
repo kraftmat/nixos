@@ -67,6 +67,7 @@
   # ── Сеть ──────────────────────────────────────────────────────────────────
   networking.hostName              = hostName;
   networking.networkmanager.enable = true;
+  networking.interfaces.enp3s0.wakeOnLan.enable = true; 
 
   services.yggdrasil = {
     enable         = true;
