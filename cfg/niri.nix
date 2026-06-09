@@ -193,6 +193,12 @@ xdg.configFile."niri/config.kdl".text = ''
         Ctrl+WheelScrollDown allow-when-locked=true {
             spawn "dms" "ipc" "call" "audio" "decrement" "3";
         }
+        Ctrl+TouchpadScrollDown allow-when-locked=true {
+            spawn "dms" "ipc" "call" "audio" "increment" "3";
+        }
+        Ctrl+TouchpadScrollUp allow-when-locked=true {
+            spawn "dms" "ipc" "call" "audio" "decrement" "3";
+        }
         XF86AudioMute allow-when-locked=true {
             spawn "dms" "ipc" "call" "audio" "mute";
         }
@@ -276,7 +282,7 @@ xdg.configFile."niri/config.kdl".text = ''
         Mod+Shift+WheelScrollUp        { focus-column-left; }
         Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
         Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
-
+        
         Mod+1 { focus-workspace 1; }
         Mod+2 { focus-workspace 2; }
         Mod+3 { focus-workspace 3; }

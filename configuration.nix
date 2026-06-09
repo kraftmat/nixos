@@ -55,18 +55,8 @@
     wantedBy = [ "multi-user.target" ];
   };
 
-  # TLP — управление питанием (только для ноута)
-  services.tlp = lib.mkIf hostConfig.enableTlp {
-    enable = true;
-    settings = {
-      CPU_SCALING_GOVERNOR_ON_AC    = "performance";
-      CPU_SCALING_GOVERNOR_ON_BAT   = "powersave";
-      CPU_ENERGY_PERF_POLICY_ON_AC  = "performance";
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-      RUNTIME_PM_ON_AC              = "auto";
-      RUNTIME_PM_ON_BAT             = "auto";
-    };
-  };
+  # power profiles daemon  — управление питанием (только для ноута)
+  services.power-profiles-daemon.enable = lib.mkIf hostConfig.isLaptop true;
 
   # ── Zram ──────────────────────────────────────────────────────────────────
   zramSwap = {

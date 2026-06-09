@@ -120,7 +120,6 @@
           videoDrivers  = [ "nvidia" ];
           intelCpu      = true;
           enableLact    = false;
-          enableTlp     = true;
           isLaptop      = true;
           nvidia = {
             intelBusId  = "PCI:0:2:0";
