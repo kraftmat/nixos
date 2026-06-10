@@ -33,10 +33,6 @@
     polkit_gnome
     gvfs
     nerd-fonts.jetbrains-mono
-    adw-gtk3
-    gnumake
-    cmake
-    sx
     obs-studio
     qbittorrent
     lutris
@@ -47,9 +43,10 @@
     loupe
     thunderbird
     bottles
-
+    btrfs-assistant
+	adw-gtk3
     inputs.fjordlauncher.packages.${pkgs.system}.fjordlauncher
-
+	
     throne
   ] ++ lib.optionals hostConfig.enableLact [ 
   pkgs.lact 
