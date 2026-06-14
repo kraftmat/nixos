@@ -11,6 +11,7 @@
   boot.supportedFilesystems = [ "btrfs" ];
 
   # ── Ядро ──────────────────────────────────────────────────────────────────
+  boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.kernelParams         = hostConfig.kernelParams;
   boot.initrd.kernelModules = hostConfig.initrdModules;
 
@@ -99,6 +100,13 @@
     };
   };
 
+  services.zerotierone = {
+    enable = true;
+    joinNetworks = [
+      "b9a18a606ffecb53"
+    ];
+  };
+
   # ── Локаль / время ────────────────────────────────────────────────────────
   time.timeZone      = "Europe/Riga";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -179,13 +187,15 @@
   };
 
   # ── Display manager ───────────────────────────────────────────────────────
-  services.displayManager.ly = {
-    enable   = true;
-    settings = {
-      animation = "doom";
-      bigclock  = true;
-    };
+services.displayManager.ly = {
+  enable   = true;
+  settings = {
+    animation     = "dur_file";
+    dur_file_path = "${./cfg/blackhole-smooth-240x67.dur}";
+    full_color    = true;
+    bigclock      = true;
   };
+};
 
   # ── SSH ───────────────────────────────────────────────────────────────────
   services.openssh.enable = true;
