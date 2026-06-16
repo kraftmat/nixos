@@ -46,10 +46,31 @@
     btrfs-assistant
 	adw-gtk3
     inputs.fjordlauncher.packages.${pkgs.system}.fjordlauncher
+	lua 
 	
     throne
   ] ++ lib.optionals hostConfig.enableLact [ 
   pkgs.lact 
+
+    (pkgs.writeShellScriptBin "llama-server" ''
+      export HSA_OVERRIDE_GFX_VERSION=10.3.0
+      exec ${(pkgs.llama-cpp.overrideAttrs (old: {
+        cmakeFlags = (old.cmakeFlags or []) ++ [
+          "-DGGML_HIP=ON"
+          "-DAMDGPU_TARGETS=gfx1030"
+        ];
+      })).override { rocmSupport = true; }}/bin/llama-server "$@"
+    '')
+    (pkgs.writeShellScriptBin "llama-cli" ''
+      export HSA_OVERRIDE_GFX_VERSION=10.3.0
+      exec ${(pkgs.llama-cpp.overrideAttrs (old: {
+        cmakeFlags = (old.cmakeFlags or []) ++ [
+          "-DGGML_HIP=ON"
+          "-DAMDGPU_TARGETS=gfx1030"
+        ];
+      })).override { rocmSupport = true; }}/bin/llama-cli "$@"
+    '')
+
   ];
 
   # ── swayosd ───────────────────────────────────────────────────────────────
