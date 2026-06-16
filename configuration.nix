@@ -94,7 +94,7 @@
       Type             = "simple";
       User             = "root";
       WorkingDirectory = "/home/kraftmat/zapret-discord-youtube-linux";
-      ExecStart        = "/run/current-system/sw/bin/bash service.sh run -c conf.env";
+      ExecStart        = "${pkgs.bash}/bin/bash service.sh run -c conf.env";
       Restart          = "on-failure";
       RestartSec       = "5s";
     };
@@ -131,6 +131,7 @@
     procps
     screen
     ffmpeg
+    nixd
   ];
 
   services.upower.enable = lib.mkIf hostConfig.isLaptop true;
@@ -205,5 +206,5 @@ services.displayManager.ly = {
   security.polkit.enable    = true;
   hardware.bluetooth.enable = true;
 
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
 }

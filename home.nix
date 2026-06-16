@@ -44,34 +44,48 @@
     thunderbird
     bottles
     btrfs-assistant
-	adw-gtk3
+    adw-gtk3
     inputs.fjordlauncher.packages.${pkgs.system}.fjordlauncher
-	lua 
-	
+    lua 
+
     throne
   ] ++ lib.optionals hostConfig.enableLact [ 
   pkgs.lact 
 
     (pkgs.writeShellScriptBin "llama-server" ''
       export HSA_OVERRIDE_GFX_VERSION=10.3.0
-      exec ${(pkgs.llama-cpp.overrideAttrs (old: {
-        cmakeFlags = (old.cmakeFlags or []) ++ [
-          "-DGGML_HIP=ON"
-          "-DAMDGPU_TARGETS=gfx1030"
-        ];
-      })).override { rocmSupport = true; }}/bin/llama-server "$@"
+      exec ${pkgs.llama-cpp-rocm}/bin/llama-server "$@"
     '')
     (pkgs.writeShellScriptBin "llama-cli" ''
       export HSA_OVERRIDE_GFX_VERSION=10.3.0
-      exec ${(pkgs.llama-cpp.overrideAttrs (old: {
-        cmakeFlags = (old.cmakeFlags or []) ++ [
-          "-DGGML_HIP=ON"
-          "-DAMDGPU_TARGETS=gfx1030"
-        ];
-      })).override { rocmSupport = true; }}/bin/llama-cli "$@"
+      exec ${pkgs.llama-cpp-rocm}/bin/llama-cli "$@"
     '')
 
   ];
+
+  programs.opencode = {
+    enable = true;
+    settings = {
+      "$schema" = "https://opencode.ai/config.json";
+      lsp = true;
+      provider = {
+        "llama.cpp" = {
+          npm = "@ai-sdk/openai-compatible";
+          name = "llama-server (local)";
+          options.baseURL = "http://127.0.0.1:8080/v1";
+          models = {
+            "qwen-coder" = {
+              name = "Qwen2.5 Coder 7B (local)";
+              limit = {
+                context = 32768;
+                output  = 8192;
+              };
+            };
+          };
+        };
+      };
+    };
+  };
 
   # ── swayosd ───────────────────────────────────────────────────────────────
   services.swayosd.enable = true;
@@ -118,7 +132,7 @@
     build-switch = "sudo nixos-rebuild switch --flake ${flakePath} --option substituters 'https://cache.nixos.org'";
     build-boot   = "sudo nixos-rebuild boot   --flake ${flakePath} --option substituters 'https://cache.nixos.org'";
     ll           = "ls -lah";
- 	 };
+  };
   };
   # ── Kitty ─────────────────────────────────────────────────────────────────
   programs.kitty = {
