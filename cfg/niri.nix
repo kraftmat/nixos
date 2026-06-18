@@ -139,28 +139,16 @@ xdg.configFile."niri/config.kdl".text = ''
         open-floating true
     }
     window-rule {
-        match app-id=r#"^org\.gnome\."#
-        draw-border-with-background false
-        geometry-corner-radius 12
+        open-maximized true
+        geometry-corner-radius 4
         clip-to-geometry true
     }
     window-rule {
-        match app-id=r#"^gnome-control-center$"#
-        match app-id=r#"^pavucontrol$"#
-        match app-id=r#"^nm-connection-editor$"#
+        match app-id=r#"^org\.gnome\."#
+        open-maximized false
         default-column-width { proportion 0.5; }
-        open-floating false
-    }
-    window-rule {
-        match app-id=r#"^gnome-calculator$"#
-        match app-id=r#"^galculator$"#
-        match app-id=r#"^blueman-manager$"#
-        match app-id=r#"^org\.gnome\.Nautilus$"#
-        match app-id=r#"^xdg-desktop-portal$"#
-        open-floating false
-    }
-    window-rule {
-        geometry-corner-radius 4
+        draw-border-with-background false
+        geometry-corner-radius 12
         clip-to-geometry true
     }
    
@@ -303,7 +291,6 @@ xdg.configFile."niri/config.kdl".text = ''
         Mod+Shift+8 { move-column-to-workspace 8; }
         Mod+Shift+9 { move-column-to-workspace 9; }
 
-        Mod+A { spawn "dms" "ipc" "call" "plugins" "toggle" "aiAssistant"; }
         Mod+W { spawn "floorp"; }
         Mod+E { spawn "nautilus"; }
         Mod+Shift+D { spawn "vesktop"; }

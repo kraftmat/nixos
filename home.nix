@@ -33,6 +33,7 @@
     polkit_gnome
     gvfs
     nerd-fonts.jetbrains-mono
+    inter-nerdfont
     obs-studio
     qbittorrent
     lutris
@@ -46,7 +47,8 @@
     btrfs-assistant
     adw-gtk3
     inputs.fjordlauncher.packages.${pkgs.system}.fjordlauncher
-    lua 
+    lua
+    inter
 
     throne
   ] ++ lib.optionals hostConfig.enableLact [ 

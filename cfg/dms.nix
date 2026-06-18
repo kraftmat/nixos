@@ -250,7 +250,7 @@
     "launcherLogoBrightness" = 0.5;
     "launcherLogoContrast" = 1;
     "launcherLogoSizeOffset" = 0;
-    "fontFamily" = "Inter Variable";
+    "fontFamily" = "Inter Nerd Font";
     "monoFontFamily" = "Fira Code";
     "fontWeight" = 400;
     "fontScale" = 1;
