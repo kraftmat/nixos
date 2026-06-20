@@ -151,7 +151,17 @@ xdg.configFile."niri/config.kdl".text = ''
         geometry-corner-radius 12
         clip-to-geometry true
     }
-   
+    window-rule {
+        match app-id="steam" title="Steam"
+        open-maximized true
+    }
+    window-rule {
+        match app-id="steam" title=r#"^(Friends List|.*Chats?)$"#
+        open-floating true
+        default-column-width { fixed 800; }
+        default-window-height { fixed 600; }
+    }
+    
     binds {
         Mod+Tab repeat=false { toggle-overview; }
         Mod+Shift+B { show-hotkey-overlay; }
