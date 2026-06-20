@@ -84,6 +84,7 @@
   };
 
   systemd.services.zapret-home = {
+  	enable 		= lib.mkIf hostConfig.enableLact false;
     description = "Zapret";
     after       = [ "network.target" ];
     wantedBy    = [ "multi-user.target" ];
@@ -135,6 +136,7 @@
   ];
 
   services.upower.enable = lib.mkIf hostConfig.isLaptop true;
+  programs.gamemode.enable = true;
 
   # ── Throne ────────────────────────────────────────────────────────────────
   programs.throne = {

@@ -36,14 +36,13 @@
     inter-nerdfont
     obs-studio
     qbittorrent
-    lutris
     wine
     deadlock-mod-manager
     materialgram
     amberol
     loupe
     thunderbird
-    bottles
+    (bottles.override { removeWarningPopup = true; })
     btrfs-assistant
     adw-gtk3
     inputs.fjordlauncher.packages.${pkgs.system}.fjordlauncher
