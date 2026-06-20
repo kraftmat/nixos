@@ -49,6 +49,7 @@
     inputs.fjordlauncher.packages.${pkgs.system}.fjordlauncher
     lua
     inter
+    go
 
     throne
   ] ++ lib.optionals hostConfig.enableLact [ 
