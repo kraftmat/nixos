@@ -39,8 +39,6 @@
     wine
     deadlock-mod-manager
     materialgram
-    amberol
-    loupe
     thunderbird
     (bottles.override { removeWarningPopup = true; })
     btrfs-assistant
