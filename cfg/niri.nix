@@ -135,18 +135,24 @@ xdg.configFile."niri/config.kdl".text = ''
     }
 
     window-rule {
-        match app-id="KonataDancer"
-        open-floating true
-    }
-    window-rule {
         open-maximized true
         geometry-corner-radius 4
         clip-to-geometry true
     }
     window-rule {
         match app-id=r#"^org\.gnome\."#
-        open-maximized false
-        default-column-width { proportion 0.5; }
+        open-floating true
+        default-column-width { fixed 400; }
+        default-window-height { fixed 800; }
+        draw-border-with-background false
+        geometry-corner-radius 12
+        clip-to-geometry true
+    }
+    window-rule {
+        match app-id=r#"^org\.gtk\."#
+        open-floating true
+        default-column-width { fixed 400; }
+        default-window-height { fixed 800; }
         draw-border-with-background false
         geometry-corner-radius 12
         clip-to-geometry true
