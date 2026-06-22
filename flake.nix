@@ -7,7 +7,7 @@
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     nur.url = "github:nix-community/NUR";
@@ -30,7 +30,6 @@
     sharedOverlays = [
       nur.overlays.default
       (final: prev: {
-        # тесты openldap падают в sandboxe, отключаем
         openldap = prev.openldap.overrideAttrs (_: { doCheck = false; });
 
         llama-cpp-rocm = (prev.llama-cpp.overrideAttrs (old: {

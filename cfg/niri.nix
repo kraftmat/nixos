@@ -142,8 +142,17 @@ xdg.configFile."niri/config.kdl".text = ''
     window-rule {
         match app-id=r#"^org\.gnome\."#
         open-floating true
-        default-column-width { fixed 400; }
-        default-window-height { fixed 800; }
+        default-column-width { fixed 480; }
+        default-window-height { fixed 860; }
+        draw-border-with-background false
+        geometry-corner-radius 12
+        clip-to-geometry true
+    }
+    window-rule {
+        match app-id=r#"^org\.gnome\.(Showtime|SystemMonitor)$"#
+        open-floating true
+        default-column-width { fixed 860; }
+        default-window-height { fixed 540; }
         draw-border-with-background false
         geometry-corner-radius 12
         clip-to-geometry true
@@ -151,8 +160,8 @@ xdg.configFile."niri/config.kdl".text = ''
     window-rule {
         match app-id=r#"^org\.gtk\."#
         open-floating true
-        default-column-width { fixed 400; }
-        default-window-height { fixed 800; }
+        default-column-width { fixed 480; }
+        default-window-height { fixed 860; }
         draw-border-with-background false
         geometry-corner-radius 12
         clip-to-geometry true
