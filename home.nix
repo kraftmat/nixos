@@ -48,7 +48,6 @@
     inter
     go
 
-    throne
   ] ++ lib.optionals hostConfig.enableLact [ 
   pkgs.lact 
 
