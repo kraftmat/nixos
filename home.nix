@@ -34,7 +34,6 @@
     gvfs
     nerd-fonts.jetbrains-mono
     inter-nerdfont
-    obs-studio
     qbittorrent
     wine
     deadlock-mod-manager
@@ -84,6 +83,17 @@
         };
       };
     };
+  };
+
+   programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      wlrobs
+      obs-backgroundremoval
+      obs-pipewire-audio-capture
+      pixel-art
+      obs-retro-effects
+    ];
   };
 
   # ── swayosd ───────────────────────────────────────────────────────────────
