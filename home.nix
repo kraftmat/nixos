@@ -30,7 +30,6 @@
     mangohud
     protonup-qt
     floorp-bin
-    polkit_gnome
     gvfs
     nerd-fonts.jetbrains-mono
     inter-nerdfont
@@ -42,7 +41,7 @@
     (bottles.override { removeWarningPopup = true; })
     btrfs-assistant
     adw-gtk3
-    inputs.fjordlauncher.packages.${pkgs.system}.fjordlauncher
+    inputs.fjordlauncher.packages.${pkgs.stdenv.hostPlatform.system}.fjordlauncher
     lua
     inter
     go

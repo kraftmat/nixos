@@ -14,12 +14,12 @@
 
     dms = {
       url = "github:AvengeMedia/DankMaterialShell/stable";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     dms-plugin-registry = {
       url = "github:AvengeMedia/dms-plugin-registry";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     fjordlauncher.url = "github:unmojang/FjordLauncher";
@@ -81,7 +81,7 @@
 
               users.kraftmat = { imports = [
                 dms.homeModules.dank-material-shell
-                dms-plugin-registry.modules.default
+                dms-plugin-registry.homeModules.default
                 ./home.nix
               ]; };
             };

@@ -90,7 +90,7 @@
   };
 
   systemd.services.zapret-home = {
-  	enable 		= lib.mkIf hostConfig.enableLact false;
+  	enable 		= lib.mkIf (!hostConfig.enableLact) true;
     description = "Zapret";
     after       = [ "network.target" ];
     wantedBy    = [ "multi-user.target" ];
@@ -155,6 +155,8 @@
 
   # ── niri ──────────────────────────────────────────────────────────────────
   programs.niri.enable = true;
+  # DMS has its own polkit agent — disable niri-flake's to avoid conflicts
+  systemd.user.services.niri-flake-polkit.enable = false;
 
   # ── Nix ───────────────────────────────────────────────────────────────────
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

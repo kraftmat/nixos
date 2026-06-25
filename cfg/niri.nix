@@ -83,7 +83,6 @@ xdg.configFile."niri/config.kdl".text = ''
     }
 
     spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
-    spawn-at-startup "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
     spawn-at-startup "dms" "run"
 
     environment {
