@@ -12,6 +12,8 @@
     xwayland-satellite
     wl-clipboard
     brightnessctl
+    libinput
+    evtest
     playerctl
     swayosd
     cliphist

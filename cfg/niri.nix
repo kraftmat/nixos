@@ -83,7 +83,6 @@ xdg.configFile."niri/config.kdl".text = ''
     }
 
     spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
-    spawn-at-startup "dms" "run"
 
     environment {
         XDG_CURRENT_DESKTOP "niri"

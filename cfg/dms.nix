@@ -5,7 +5,7 @@
     enable = true;
 
     systemd = {
-      enable           = false;
+      enable           = true;
       restartIfChanged = true;
     };
 
@@ -18,6 +18,7 @@
 
     plugins = {
       dankBatteryAlerts.enable = false;
+      bongoCat.enable = true;
     };
 
     settings = {
@@ -140,13 +141,13 @@
           enabled = true;
           width = 50;
         }
-        {
-          id = "darkMode";
-          enabled = true;
-          width = 50;
-        }
-      ];
-      showWorkspaceIndex = false;
+            {
+              id = "darkMode";
+              enabled = true;
+              width = 50;
+            }
+          ];
+          showWorkspaceIndex = false;
       showWorkspaceName = false;
       showWorkspacePadding = false;
       workspaceScrolling = false;
@@ -486,6 +487,10 @@
             }
             {
               id = "battery";
+              enabled = true;
+            }
+            {
+              id = "bongoCat";
               enabled = true;
             }
           ];
