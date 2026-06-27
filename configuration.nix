@@ -107,6 +107,8 @@
     };
   };
 
+  services.cloudflare-warp.enable = true;
+
   services.zerotierone = {
     enable = true;
     joinNetworks = [
@@ -123,7 +125,7 @@
     isNormalUser = true;
     description  = "kraftmat";
     shell        = pkgs.fish;
-    extraGroups  = [ "networkmanager" "wheel" "input" "render" "video" "audio" ];
+    extraGroups  = [ "networkmanager" "wheel" "input" "render" "video" "audio" "docker" ];
   };
 
   # ── Системные пакеты ──────────────────────────────────────────────────────
@@ -139,10 +141,13 @@
     screen
     ffmpeg
     nixd
+    cloudflare-warp
   ];
 
   services.upower.enable = lib.mkIf hostConfig.isLaptop true;
   programs.gamemode.enable = true;
+
+  virtualisation.docker.enable = true;
 
   # ── Throne ────────────────────────────────────────────────────────────────
   programs.throne = {

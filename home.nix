@@ -47,6 +47,7 @@
     lua
     inter
     go
+    youtube-music
 
   ] ++ lib.optionals hostConfig.enableLact [ 
   pkgs.lact 
