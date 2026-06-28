@@ -21,6 +21,7 @@
       bongoCat.enable = true;
       warpToggle.enable = true;
       dockerManager.enable = true;
+      easyEffects.enable = true;
     };
 
     settings = builtins.fromJSON ''{
@@ -512,6 +513,10 @@
         },
         {
           "id": "dockerManager",
+          "enabled": true
+        },
+        {
+          "id": "easyEffects",
           "enabled": true
         },
         {

@@ -21,6 +21,7 @@
     btop
     nautilus
     showtime
+    loupe
     gnome-clocks
     gnome-system-monitor
     bibata-cursors
