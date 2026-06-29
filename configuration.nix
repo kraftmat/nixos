@@ -218,6 +218,22 @@ services.displayManager.ly = {
   services.openssh.ports  = [ 2222 ];
 
   # ── Прочее ────────────────────────────────────────────────────────────────
+  security.sudo.extraRules = [
+    {
+      users = [ "kraftmat" ];
+      commands = [
+        {
+          command = "/run/current-system/sw/bin/nixos-rebuild";
+          options = [ "NOPASSWD" ];
+        }
+        {
+          command = "/run/current-system/sw/bin/nix-collect-garbage";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }
+  ];
+
   security.polkit.enable    = true;
   hardware.bluetooth.enable = true;
 

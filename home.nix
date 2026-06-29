@@ -48,7 +48,7 @@
     lua
     inter
     go
-    youtube-music
+    pear-desktop
 
   ] ++ lib.optionals hostConfig.enableLact [ 
   pkgs.lact 
@@ -128,7 +128,7 @@
     enable = true;
     clean = {
       enable    = true;
-      extraArgs = "--keep 3 --keep-since 10d";
+      extraArgs = "--keep 6 --keep-since 3d";
     };
   };
 

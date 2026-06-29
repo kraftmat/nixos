@@ -23,9 +23,11 @@
     };
 
     fjordlauncher.url = "github:unmojang/FjordLauncher";
+
+    nix-monitor.url = "github:antonjah/nix-monitor";
   };
 
-  outputs = { nixpkgs, nixpkgs-stable, home-manager, dms, dms-plugin-registry, fjordlauncher, nur, ... } @ inputs:
+  outputs = { nixpkgs, nixpkgs-stable, home-manager, dms, dms-plugin-registry, fjordlauncher, nix-monitor, nur, ... } @ inputs:
   let
     sharedOverlays = [
       nur.overlays.default
@@ -50,7 +52,7 @@
       nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-          inherit inputs dms dms-plugin-registry fjordlauncher;
+          inherit inputs dms dms-plugin-registry fjordlauncher nix-monitor;
           hostName   = hostname;
           inherit hostConfig;
         };
@@ -72,7 +74,7 @@
               useUserPackages = true;
               backupFileExtension = "backup";
               extraSpecialArgs = {
-                inherit inputs dms dms-plugin-registry fjordlauncher;
+                inherit inputs dms dms-plugin-registry fjordlauncher nix-monitor;
                 hostName    = hostname;
                 flakePath   = "/etc/nixos#${hostname}";
                 hostConfig  = hmHostConfig;
@@ -82,6 +84,7 @@
               users.kraftmat = { imports = [
                 dms.homeModules.dank-material-shell
                 dms-plugin-registry.homeModules.default
+                nix-monitor.homeManagerModules.default
                 ./home.nix
               ]; };
             };
