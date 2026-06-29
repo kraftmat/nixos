@@ -1,17 +1,5 @@
 { config, pkgs, lib, hostName, ... }: {
 
-  programs.nix-monitor = {
-    enable = true;
-    generationsCommand = [
-      "sh" "-c"
-      "ls -d /nix/var/nix/profiles/system-*-link 2>/dev/null | wc -l"
-    ];
-    rebuildCommand = [
-      "bash" "-c"
-      "sudo nixos-rebuild switch --flake /etc/nixos#${hostName} 2>&1"
-    ];
-  };
-
   programs.dank-material-shell = {
     enable = true;
 
@@ -33,6 +21,12 @@
       warpToggle.enable = true;
       dockerManager.enable = true;
       easyEffects.enable = true;
+      nixMonitor = {
+        enable = true;
+        settings = {
+          checkUpdates = false;
+        };
+      };
     };
 
     settings = builtins.fromJSON ''{

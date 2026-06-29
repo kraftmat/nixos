@@ -106,6 +106,15 @@
   services.easyeffects.enable = true;
   xdg.configFile."easyeffects/output/AutoEq.json".source = ./cfg/EF.json;
 
+  # ── nixMonitor plugin config ──────────────────────────────────────────────
+  xdg.configFile."DankMaterialShell/plugins/NixMonitor/config.json".text = builtins.toJSON {
+    generationsCommand = [ "sh" "-c" "ls -d /nix/var/nix/profiles/system-*-link 2>/dev/null | wc -l" ];
+    storeSizeCommand = [ "sh" "-c" "du -sh /nix/store 2>/dev/null | cut -f1" ];
+    rebuildCommand = [ "bash" "-c" "sudo nixos-rebuild switch --flake /etc/nixos#${hostName} 2>&1" ];
+    gcCommand = [ "sh" "-c" "nix-collect-garbage -d 2>&1" ];
+    updateInterval = 300;
+  };
+
   # ── fetch ─────────────────────────────────────────────────────────────────
   programs.fastfetch = {
     enable   = true;
