@@ -28,7 +28,7 @@
     morewaita-icon-theme
     vesktop
     gh
-    steam
+    steam # mangohud gamemoderun XKB_DEFAULT_LAYOUT=us,ru XKB_DEFAULT_OPTIONS=grp:caps_toggle gamescope --expose-wayland -- %command%
     gamemode
     mangohud
     protonup-qt
@@ -48,6 +48,7 @@
     lua
     inter
     go
+    gamescope
     pear-desktop
 
   ] ++ lib.optionals hostConfig.enableLact [ 
