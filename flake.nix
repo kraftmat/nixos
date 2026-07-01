@@ -2,24 +2,24 @@
   description = "kraftmat";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      url = "github:nix-community/home-manager/release-26.05";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nur.url = "github:nix-community/NUR";
 
     dms = {
       url = "github:AvengeMedia/DankMaterialShell/stable";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     dms-plugin-registry = {
       url = "github:AvengeMedia/dms-plugin-registry";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     fjordlauncher.url = "github:unmojang/FjordLauncher";
@@ -42,7 +42,7 @@
       })
     ];
 
-    mkPkgsStable = import nixpkgs-stable {
+    mkPkgsUnstable = import nixpkgs-stable {
       system = "x86_64-linux";
       config.allowUnfree = true;
     };
@@ -77,7 +77,7 @@
                 hostName    = hostname;
                 flakePath   = "/etc/nixos#${hostname}";
                 hostConfig  = hmHostConfig;
-                pkgs-stable = mkPkgsStable;
+                pkgs-stable = mkPkgsUnstable;
               };
 
               users.kraftmat = { imports = [
