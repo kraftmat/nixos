@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
@@ -26,7 +26,7 @@
 
   };
 
-  outputs = { nixpkgs, nixpkgs-stable, home-manager, dms, dms-plugin-registry, fjordlauncher, nur, ... } @ inputs:
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, dms, dms-plugin-registry, fjordlauncher, nur, ... } @ inputs:
   let
     sharedOverlays = [
       nur.overlays.default
@@ -42,7 +42,7 @@
       })
     ];
 
-    mkPkgsUnstable = import nixpkgs-stable {
+    mkPkgsUnstable = import nixpkgs-unstable {
       system = "x86_64-linux";
       config.allowUnfree = true;
     };
@@ -64,7 +64,7 @@
 
           ({ pkgs, ... }: {
             nix.settings = {
-              substituters        = [ "https://cache.nixos.org" ];
+              substituters        = [ "https://cache.nixos.org" "https://unmojang.cachix.org" ];
               trusted-public-keys = [ "unmojang.cachix.org-1:OfHnbBNduZ6Smx9oNbLFbYyvOWSoxb2uPcnXPj4EDQY=" ];
             };
 

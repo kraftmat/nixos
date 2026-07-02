@@ -209,7 +209,7 @@
   };
 
   # ── Display manager ───────────────────────────────────────────────────────
-services.displayManager.ly = {
+  services.displayManager.ly = {
   enable   = true;
   settings = {
     animation     = "dur_file";
