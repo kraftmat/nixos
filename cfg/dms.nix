@@ -1,5 +1,18 @@
-{ config, pkgs, lib, hostName, ... }: {
+{ config, pkgs, lib, hostName, ... } @ args:
 
+let
+  dmsPluginRegistry = args."dms-plugin-registry" or null;
+
+  # easyEffects plugin uses pgrep -x which fails because Nix wrapper renames
+  # the process to .easyeffects-wr; pgrep -f matches on full cmdline instead.
+  patchedEasyEffects = pkgs.runCommandLocal "dms-plugin-easyeffects-patched" {
+    src = dmsPluginRegistry.packages.${pkgs.stdenv.hostPlatform.system}.easyEffects;
+  } ''
+    cp -r "$src" "$out"
+    chmod -R +w "$out"
+    sed -i 's/"pgrep", "-x"/"pgrep", "-f"/' "$out/EasyEffectsWidget.qml"
+  '';
+in {
   programs.dank-material-shell = {
     enable = true;
 
@@ -20,7 +33,10 @@
       bongoCat.enable = true;
       warpToggle.enable = true;
       dockerManager.enable = true;
-      easyEffects.enable = true;
+      easyEffects = {
+        enable = true;
+        src = lib.mkForce patchedEasyEffects;
+      };
       nixMonitor = {
         enable = true;
         settings = {
