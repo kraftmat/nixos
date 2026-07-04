@@ -96,7 +96,7 @@
   };
 
   systemd.services.zapret-home = {
-  	enable 		= lib.mkIf (!hostConfig.enableLact) true;
+  	enable 		= lib.mkIf (hostConfig.enableLact) false;
     description = "Zapret";
     after       = [ "network.target" ];
     wantedBy    = [ "multi-user.target" ];
