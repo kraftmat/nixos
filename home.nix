@@ -135,15 +135,6 @@
     };
   };
 
-  # ── nh ────────────────────────────────────────────────────────────────────
-  programs.nh = {
-    enable = true;
-    clean = {
-      enable    = true;
-      extraArgs = "--keep 6 --keep-since 3d";
-    };
-  };
-
   # ── Fish ──────────────────────────────────────────────────────────────────
   programs.fish = {
     enable = true;
