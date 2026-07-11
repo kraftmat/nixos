@@ -6,6 +6,7 @@
   boot.loader.systemd-boot.enable      = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint     = "/boot";
+  boot.loader.systemd-boot.configurationLimit = 15;
 
   # ── Файловая система ───────────────────────────────────────────────────────
   boot.supportedFilesystems = [ "btrfs" ];
@@ -186,7 +187,18 @@
   systemd.user.services.niri-flake-polkit.enable = false;
 
   # ── Nix ───────────────────────────────────────────────────────────────────
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nix.settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store   = true;   
+      min-free = 3  * 1024 * 1024 * 1024;  
+      max-free = 10 * 1024 * 1024 * 1024;  
+    };
+  
+    nix.gc = {
+      automatic = true;
+      dates     = "weekly";
+      options   = "--delete-older-than 7d";
+    };
 
   # ── Snapper  ──────────────────────────────────────────────────────────────
   services.snapper = {
