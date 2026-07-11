@@ -44,7 +44,9 @@
     (bottles.override { removeWarningPopup = true; })
     btrfs-assistant
     adw-gtk3
-    inputs.fjordlauncher.packages.${pkgs.stdenv.hostPlatform.system}.fjordlauncher
+    (inputs.fjordlauncher.packages.${pkgs.stdenv.hostPlatform.system}.fjordlauncher.override {
+      jdks = with pkgs; [ zulu zulu21 zulu17 zulu8 ];
+    })
     lua
     inter
     go
