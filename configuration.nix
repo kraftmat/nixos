@@ -76,6 +76,7 @@
   networking.networkmanager.enable = true;
   networking.interfaces.enp3s0.wakeOnLan.enable = true; 
   networking.firewall = {
+    allowedUDPPorts = [ 9993 ];
     allowedTCPPorts = [ 27040 24070 ];
     allowedUDPPortRanges = [
       { from = 27031; to = 27036; }
@@ -96,7 +97,7 @@
   };
 
   systemd.services.zapret-home = {
-  	enable 		= lib.mkIf (hostConfig.enableLact) false;
+  	enable 		= true;
     description = "Zapret";
     after       = [ "network.target" ];
     wantedBy    = [ "multi-user.target" ];
@@ -148,11 +149,26 @@
     ffmpeg
     nixd
     cloudflare-warp
+    cloudflared
   ];
-
+  programs.steam = {
+    enable = true;
+  };
   services.upower.enable = lib.mkIf hostConfig.isLaptop true;
   programs.gamemode.enable = true;
-
+  programs.nix-ld.libraries = with pkgs; [
+    freetype
+    libGL
+    vulkan-loader
+    gnutls
+    libglvnd
+    fontconfig
+    wayland
+    libxkbcommon
+    libdrm
+    mesa
+  ];
+  
   virtualisation.docker.enable = true;
 
   # ── Throne ────────────────────────────────────────────────────────────────

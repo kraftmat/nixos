@@ -165,11 +165,11 @@ xdg.configFile."niri/config.kdl".text = ''
         clip-to-geometry true
     }
     window-rule {
-        match app-id="steam" title="Steam"
+        match app-id="Steam" title="steam"
         open-maximized true
     }
     window-rule {
-        match app-id="steam" title=r#"^(Friends List|.*Chats?)$"#
+        match app-id="Steam" title=r#"^(Friends List|.*Chats?)$"#
         open-floating true
         default-column-width { fixed 800; }
         default-window-height { fixed 600; }
