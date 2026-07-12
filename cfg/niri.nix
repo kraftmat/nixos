@@ -43,8 +43,10 @@ xdg.configFile."niri/config.kdl".text = ''
             }
     }
 
+    include "dms/colors.kdl"
+
     layout {
-        gaps 23
+        gaps 3
         background-color "transparent"
         center-focused-column "never"
         always-center-single-column
@@ -52,14 +54,10 @@ xdg.configFile."niri/config.kdl".text = ''
         border {
             off
             width 4
-            active-color   "#707070"
-            inactive-color "#d0d0d0"
-            urgent-color   "#cc4444"
         }
         focus-ring {
             on
             width 3
-            active-color "#4f6b5a"
         }
         shadow {
             softness 30
@@ -99,7 +97,7 @@ xdg.configFile."niri/config.kdl".text = ''
     screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
     animations {
-        on
+        off
         workspace-switch {
             spring damping-ratio=0.80 stiffness=523 epsilon=0.0001
         }
@@ -134,7 +132,7 @@ xdg.configFile."niri/config.kdl".text = ''
 
     window-rule {
         open-maximized true
-        geometry-corner-radius 4
+        geometry-corner-radius 12
         clip-to-geometry true
     }
     window-rule {
