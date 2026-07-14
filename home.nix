@@ -52,6 +52,7 @@
     go
     gamescope
     pear-desktop
+    pragha
 
   ] ++ lib.optionals hostConfig.enableLact [ 
   pkgs.lact 
@@ -155,6 +156,8 @@
     settings = {
       dynamic_background_opacity = true;
       window_padding_width       = 15;
+      font_family                = "JetBrainsMono Nerd Font";
+      font_size                  = 12;
     };
     extraConfig = ''
       include dank-theme.conf

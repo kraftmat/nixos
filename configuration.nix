@@ -178,6 +178,11 @@
     tunMode.enable = true;
   };
 
+  # ── fonts  ────────────────────────────────────────────────────────────────
+  fonts.packages = with pkgs; [
+    inter-nerdfont
+  ];
+
   # ── fish ──────────────────────────────────────────────────────────────────
   programs.fish.enable = true;
 

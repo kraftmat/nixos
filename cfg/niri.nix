@@ -46,7 +46,7 @@ xdg.configFile."niri/config.kdl".text = ''
     include "dms/colors.kdl"
 
     layout {
-        gaps 3
+        gaps 32
         background-color "transparent"
         center-focused-column "never"
         always-center-single-column
@@ -97,7 +97,7 @@ xdg.configFile."niri/config.kdl".text = ''
     screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
     animations {
-        off
+        on
         workspace-switch {
             spring damping-ratio=0.80 stiffness=523 epsilon=0.0001
         }
