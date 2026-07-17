@@ -15,7 +15,6 @@
     libinput
     evtest
     playerctl
-    swayosd
     cliphist
     yt-dlp
     btop
@@ -54,6 +53,8 @@
     pear-desktop
     pragha
     hyfetch
+    mumble
+	irssi
 
   ] ++ lib.optionals hostConfig.enableLact [
     pkgs.lact

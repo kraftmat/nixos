@@ -315,9 +315,9 @@ xdg.configFile."niri/config.kdl".text = ''
         Mod+W { spawn "floorp"; }
         Mod+E { spawn "nautilus"; }
         Mod+Shift+D { spawn "vesktop"; }
-        Pause { spawn "swayosd-client" "--playerctl" "play-pause"; }
-        MouseBack { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && swayosd-client --input-volume mute-toggle"; }
-        Shift+MouseBack { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && swayosd-client --input-volume mute-toggle"; }
+        Pause { spawn "--playerctl" "play-pause"; }
+        MouseBack { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+        Shift+MouseBack { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
         Mod+Ctrl+R { reset-window-height; }
         Mod+Ctrl+F { expand-column-to-available-width; }
