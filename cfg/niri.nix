@@ -315,7 +315,7 @@ xdg.configFile."niri/config.kdl".text = ''
         Mod+W { spawn "floorp"; }
         Mod+E { spawn "nautilus"; }
         Mod+Shift+D { spawn "vesktop"; }
-        Pause { spawn "--playerctl" "play-pause"; }
+        Pause { spawn "playerctl" "play-pause"; }
         MouseBack { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
         Shift+MouseBack { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
