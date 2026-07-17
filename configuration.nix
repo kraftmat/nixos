@@ -89,9 +89,14 @@
     persistentKeys = true;
     settings = {
       Peers = [
-        "tls://ip4.01.ekb.ru.dioni.su:9003"
-        "wss://assets.route172.de:443/api/request/media?key=00000000000da547036a01860a9e3a0476a525415801ec34f4e5b59fd6055b88"
-        "tls://45.95.202.21:443"
+	"wss://assets.route172.de:443/api/request/media?key=00000000000da547036a01860a9e3a0476a525415801ec34f4e5b59fd6055b88"
+	"ws://ru2.cert.dev:7043"
+	"wss://ygg.mvault.ru.net:443"
+	"wss://donotclickthis.link:443/api/v2/socket"
+	"tcp://yggdrasil.1337.moe:7676"
+	"tcp://[2a09:5302:ffff::132a]:65535"
+	"tcp://89.44.86.85:65535"
+	"tcp://kem.txlyre.website:1337"
       ];
       MulticastInterfaces = [ ];
     };

@@ -45,7 +45,7 @@
     btrfs-assistant
     adw-gtk3
     (inputs.fjordlauncher.packages.${pkgs.stdenv.hostPlatform.system}.fjordlauncher.override {
-      jdks = with pkgs; [ zulu zulu21 zulu17 zulu8 ];
+      jdks = with pkgs; [ zulu zulu21 zulu17 zulu8 zulu25 ];
     })
     lua
     inter
@@ -53,19 +53,11 @@
     gamescope
     pear-desktop
     pragha
+    hyfetch
 
-  ] ++ lib.optionals hostConfig.enableLact [ 
-  pkgs.lact 
-
-    (pkgs.writeShellScriptBin "llama-server" ''
-      export HSA_OVERRIDE_GFX_VERSION=10.3.0
-      exec ${pkgs.llama-cpp-rocm}/bin/llama-server "$@"
-    '')
-    (pkgs.writeShellScriptBin "llama-cli" ''
-      export HSA_OVERRIDE_GFX_VERSION=10.3.0
-      exec ${pkgs.llama-cpp-rocm}/bin/llama-cli "$@"
-    '')
-
+  ] ++ lib.optionals hostConfig.enableLact [
+    pkgs.lact
+    pkgs.llama-cpp-vulkan
   ];
 
   programs.opencode = {
@@ -154,6 +146,7 @@
   programs.kitty = {
     enable   = true;
     settings = {
+      confirm_os_window_close = 0;
       dynamic_background_opacity = true;
       window_padding_width       = 15;
       font_family                = "JetBrainsMono Nerd Font";
