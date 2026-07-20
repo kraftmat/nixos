@@ -98,6 +98,24 @@
         "type": "github"
       }
     },
+    "happ-nix": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1784383644,
+        "narHash": "sha256-kl6xE8/hEctf/ZRfS0EKyrlN4ujOu2qu482NFslmnIA=",
+        "owner": "DaHL-gh",
+        "repo": "happ-nix",
+        "rev": "d3d9d691cf476989e3aef30928cf4c08c02e3b65",
+        "type": "github"
+      },
+      "original": {
+        "owner": "DaHL-gh",
+        "repo": "happ-nix",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -166,6 +184,22 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1784120854,
+        "narHash": "sha256-KesHgItiZPgGX740axSiQLcIQ8D24MDqNpkKYWIek8k=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "753cc8a3a87467296ddd1fa93f0cc3e81120ee46",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1784011430,
         "narHash": "sha256-lDebytrYdd47IBLwvNOD+6AGeoqZ78CIKlp70hzW280=",
         "owner": "NixOS",
@@ -180,7 +214,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1784007870,
         "narHash": "sha256-djcLt/JJphyNt4eDY9XTly+/WbCK5lqWq9lSgCmJkkQ=",
@@ -199,7 +233,7 @@
     "nur": {
       "inputs": {
         "flake-parts": "flake-parts",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
         "lastModified": 1784122289,
@@ -220,8 +254,9 @@
         "dms": "dms",
         "dms-plugin-registry": "dms-plugin-registry",
         "fjordlauncher": "fjordlauncher",
+        "happ-nix": "happ-nix",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur"
       }
