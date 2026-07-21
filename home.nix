@@ -109,7 +109,7 @@
     storeSizeCommand = [ "sh" "-c" "du -sh /nix/store 2>/dev/null | cut -f1" ];
     rebuildCommand = [ "bash" "-c" "sudo nixos-rebuild switch --flake /etc/nixos#${hostName} 2>&1" ];
     gcCommand = [ "sh" "-c" "nix-collect-garbage -d 2>&1" ];
-    updateInterval = 300;
+    updateInterval = 3600;
   };
 
   # ── fetch ─────────────────────────────────────────────────────────────────

@@ -169,7 +169,8 @@ in {
         {
           "enabled": true,
           "id": "brightnessSlider",
-          "width": 50
+          "width": 50,
+          "deviceName": "backlight:intel_backlight"
         },
         {
           "enabled": true,
@@ -334,24 +335,24 @@ in {
       "weatherEnabled": true,
       "dashTabs": [
         {
-          "id": "overview",
-          "enabled": true
+          "enabled": true,
+          "id": "overview"
         },
         {
-          "id": "media",
-          "enabled": true
+          "enabled": true,
+          "id": "media"
         },
         {
-          "id": "wallpaper",
-          "enabled": true
+          "enabled": true,
+          "id": "wallpaper"
         },
         {
-          "id": "weather",
-          "enabled": true
+          "enabled": true,
+          "id": "weather"
         },
         {
-          "id": "settings",
-          "enabled": true
+          "enabled": true,
+          "id": "settings"
         }
       ],
       "networkPreference": "auto",
@@ -621,12 +622,7 @@ in {
           "borderThickness": 1,
           "bottomGap": 0,
           "centerWidgets": [
-            "music",
-            "clock",
-            {
-              "enabled": true,
-              "id": "weather"
-            }
+            "clock"
           ],
           "clickThrough": false,
           "enabled": true,
@@ -634,6 +630,7 @@ in {
           "gothCornerRadiusOverride": false,
           "gothCornerRadiusValue": 12,
           "gothCornersEnabled": false,
+          "hoverPopouts": false,
           "iconScale": 1,
           "id": "default",
           "innerPadding": 4,
@@ -641,6 +638,10 @@ in {
             {
               "enabled": true,
               "id": "workspaceSwitcher"
+            },
+            {
+              "id": "weather",
+              "enabled": true
             },
             {
               "enabled": true,
@@ -667,8 +668,9 @@ in {
               "id": "systemTray"
             },
             {
+              "id": "cpuUsage",
               "enabled": true,
-              "id": "cpuUsage"
+              "minimumWidth": false
             },
             {
               "enabled": true,
@@ -714,15 +716,14 @@ in {
           "spacing": 0,
           "squareCorners": true,
           "transparency": 1,
+          "useOverlayLayer": false,
           "visible": true,
           "widgetOutlineColor": "primary",
           "widgetOutlineEnabled": false,
           "widgetOutlineOpacity": 1,
           "widgetOutlineThickness": 1,
           "widgetPadding": 8,
-          "widgetTransparency": 1,
-          "useOverlayLayer": false,
-          "hoverPopouts": false
+          "widgetTransparency": 1
         }
       ],
       "desktopClockEnabled": false,
@@ -797,11 +798,11 @@ in {
       "desktopWidgetInstances": [],
       "desktopWidgetGroups": [],
       "builtInPluginSettings": {
-        "dms_settings_search": {
-          "trigger": "?"
-        },
         "dms_clipboard_search": {
           "trigger": "cb"
+        },
+        "dms_settings_search": {
+          "trigger": "?"
         }
       },
       "clipboardClickToPaste": false,

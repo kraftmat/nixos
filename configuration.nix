@@ -40,6 +40,8 @@
     MOZ_ENABLE_WAYLAND = "1";
   } // lib.optionalAttrs hostConfig.intelCpu {
     LIBVA_DRIVER_NAME = "iHD";
+  } // lib.optionalAttrs hostConfig.isLaptop {
+    WLR_DRM_DEVICES = "/dev/dri/card1";
   };
   services.xserver.videoDrivers = hostConfig.videoDrivers;
 

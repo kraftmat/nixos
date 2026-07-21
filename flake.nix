@@ -132,7 +132,7 @@
         hostConfig = {
           kernelParams  = [ "intel_pstate=active" "nvidia.NVreg_DynamicPowerManagement=0x02" ];
           initrdModules = [ "i915" ];
-          videoDrivers  = [ "nvidia" ];
+          videoDrivers = [ "nvidia" ];
           intelCpu      = true;
           enableLact    = false;
           isLaptop      = true;
