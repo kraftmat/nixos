@@ -29,8 +29,18 @@
   hardware.graphics = {
     enable      = true;
     enable32Bit = true;
+    extraPackages = lib.optionals hostConfig.intelCpu [
+		pkgs.intel-media-driver
+		pkgs.libva-vdpau-driver
+		pkgs.libvdpau-va-gl
+    ];
   };
-
+  
+  environment.sessionVariables = {
+    MOZ_ENABLE_WAYLAND = "1";
+  } // lib.optionalAttrs hostConfig.intelCpu {
+    LIBVA_DRIVER_NAME = "iHD";
+  };
   services.xserver.videoDrivers = hostConfig.videoDrivers;
 
   # NVIDIA Optimus (только для ноута)
@@ -96,7 +106,6 @@
 	"tls://reticulum.me:12393?key=a3d411280dfc350a4484aa3da5feb0407518c5820cbb011d5620347769b26665"
       ];
       MulticastInterfaces = [ ];
-      PrivateKeyPath = "/var/lib/yggdrasil/private.key";
     };
   };
   

@@ -318,7 +318,8 @@ xdg.configFile."niri/config.kdl".text = ''
         Pause { spawn "playerctl" "play-pause"; }
         MouseBack { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
         Shift+MouseBack { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
-
+        Mod+O { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+        
         Mod+Ctrl+R { reset-window-height; }
         Mod+Ctrl+F { expand-column-to-available-width; }
         Mod+C { center-column; }
