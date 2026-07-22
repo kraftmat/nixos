@@ -96,6 +96,7 @@
     ];
   };
 
+
   # ── EasyEffects ───────────────────────────────────────────────────────────
   services.easyeffects.enable = true;
   xdg.configFile."easyeffects/output/AutoEq.json".source = ./cfg/EF.json;
