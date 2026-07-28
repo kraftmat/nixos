@@ -5,6 +5,7 @@
     ./cfg/dms.nix
     ./cfg/niri.nix
     ./cfg/qtct.nix
+    ./modules/floorp-matugen.nix
   ];
 
   # ── Пакеты ────────────────────────────────────────────────────────────────
