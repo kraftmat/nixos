@@ -179,12 +179,13 @@ xdg.configFile."niri/config.kdl".text = ''
 
         Mod+Return { spawn "kitty" "--single-instance"; }
         Mod+R hotkey-overlay-title="Application Launcher" {
-            spawn "dms" "ipc" "call" "spotlight" "toggle";
+            spawn "dms" "ipc" "call" "spotlight-bar" "toggle";
         }
         Mod+Shift+R { switch-preset-column-width; }
         Mod+V hotkey-overlay-title="Clipboard Manager" {
             spawn "dms" "ipc" "call" "clipboard" "toggle";
         }
+        Mod+Shift+N hotkey-overlay-title="Notepad" { spawn "dms" "ipc" "call" "notepad" "toggle"; }
         Mod+N hotkey-overlay-title="Notification Center" {
             spawn "dms" "ipc" "call" "notifications" "toggle";
         }
