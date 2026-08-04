@@ -51,7 +51,6 @@
     inter
     go
     gamescope
-    pear-desktop
     pragha
     hyfetch
     mumble
