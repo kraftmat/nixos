@@ -167,10 +167,13 @@
     nixd
     cloudflare-warp
     cloudflared
+    compsize
   ];
   
-   programs.steam = {
-    enable = true;
+  programs.steam = {
+  enable = true; 
+  remotePlay.openFirewall = true;
+  dedicatedServer.openFirewall = true; 
   };
   services.upower.enable = lib.mkIf hostConfig.isLaptop true;
   programs.gamemode.enable = true;
@@ -192,7 +195,6 @@
 
   # ── niri ──────────────────────────────────────────────────────────────────
   programs.niri.enable = true;
-  # DMS has its own polkit agent — disable niri-flake's to avoid conflicts
   systemd.user.services.niri-flake-polkit.enable = false;
 
   # ── Nix ───────────────────────────────────────────────────────────────────
@@ -271,6 +273,10 @@
         }
         {
           command = "/run/current-system/sw/bin/nix-collect-garbage";
+          options = [ "NOPASSWD" ];
+        }
+        {
+          command = "/run/current-system/sw/bin/compsize";
           options = [ "NOPASSWD" ];
         }
       ];
