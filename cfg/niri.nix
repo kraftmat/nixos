@@ -86,7 +86,7 @@ xdg.configFile."niri/config.kdl".text = ''
         XDG_CURRENT_DESKTOP "niri"
         QT_QPA_PLATFORMTHEME "qt6ct"
         ELECTRON_OZONE_PLATFORM_HINT "auto"
-        TERMINAL "kitty --single-instance"
+        TERMINAL "ghostty"
     }
 
     hotkey-overlay {
@@ -177,7 +177,7 @@ xdg.configFile."niri/config.kdl".text = ''
         Mod+Tab repeat=false { toggle-overview; }
         Mod+Shift+B { show-hotkey-overlay; }
 
-        Mod+Return { spawn "kitty" "--single-instance"; }
+        Mod+Return { spawn "ghostty"; }
         Mod+R hotkey-overlay-title="Application Launcher" {
             spawn "dms" "ipc" "call" "spotlight-bar" "toggle";
         }

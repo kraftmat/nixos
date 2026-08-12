@@ -155,22 +155,24 @@
     ll           = "ls -lah";
   };
   };
-  # ── Kitty ─────────────────────────────────────────────────────────────────
-  programs.kitty = {
-    enable   = true;
-    settings = {
-      confirm_os_window_close = 0;
-      dynamic_background_opacity = true;
-      window_padding_width       = 15;
-      font_family                = "JetBrainsMono Nerd Font";
-      font_size                  = 12;
-    };
-    extraConfig = ''
-      include dank-theme.conf
-      include dank-tabs.conf
-    '';
+  # ── Ghostty ───────────────────────────────────────────────────────────────
+  programs.ghostty = {
+  	enable                = true;
+  	enableFishIntegration = true; 
+  	settings = {
+  	theme                           = "dankcolors";
+  	font-family                     = "JetBrainsMono Nerd Font";
+  	font-size                       = 12;
+  	window-padding-y                = 15;
+  	window-padding-x                = 15; 
+  	notify-on-command-finish        = "unfocused";
+  	right-click-action              = "ignore";
+  	notify-on-command-finish-action = "notify";
+  	  	keybind = [
+  		"performable:ctrl+c=copy_to_clipboard"
+  	];
+  	};
   };
-
   # ── Cursor ────────────────────────────────────────────────────────────────
   home.pointerCursor = {
     gtk.enable = true;
