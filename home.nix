@@ -37,7 +37,7 @@
     nerd-fonts.jetbrains-mono
     inter-nerdfont
     qbittorrent
-    wine
+	wineWow64Packages.stable
     deadlock-mod-manager
     materialgram
     thunderbird
