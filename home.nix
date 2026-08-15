@@ -97,7 +97,18 @@
     ];
   };
 
-
+  programs.micro = {
+  	settings = {
+  	clipboard = "terminal";
+  	colorscheme = "solarized";
+  	hlsearch = true;
+  	lsp = true;
+  	};
+  };
+  home.activation.installMicroLsp = config.lib.dag.entryAfter [ "writeBoundary" ] ''
+      $DRY_RUN_CMD ${pkgs.micro}/bin/micro -plugin install lsp || true
+    '';
+  
   # ── EasyEffects ───────────────────────────────────────────────────────────
   services.easyeffects.enable = true;
   xdg.configFile."easyeffects/output/AutoEq.json".source = ./cfg/EF.json;
@@ -168,8 +179,14 @@
   	notify-on-command-finish        = "unfocused";
   	right-click-action              = "ignore";
   	notify-on-command-finish-action = "notify";
+  	clipboard-read                  = "allow";
+  	clipboard-write                 = "allow";
   	  	keybind = [
   		"performable:ctrl+c=copy_to_clipboard"
+  		"alt+t=new_tab"
+  		"alt+c=close_surface"
+  		"alt+x=next_tab"
+  		"alt+z=previous_tab"
   	];
   	};
   };

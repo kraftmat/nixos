@@ -87,14 +87,16 @@
   # ── Сеть ──────────────────────────────────────────────────────────────────
   networking.hostName              = hostName;
   networking.networkmanager.enable = true;
-  networking.interfaces.enp3s0.wakeOnLan.enable = true; 
-  networking.firewall = {
-    allowedUDPPorts = [ 9993 ];
-    allowedTCPPorts = [ 27040 24070 ];
-    allowedUDPPortRanges = [
-      { from = 27031; to = 27036; }
-    ];
-  };
+  networking.interfaces.enp3s0.wakeOnLan.enable = true;
+  networking.networkmanager.dns = "none";
+  networking.nameservers = [
+    "1.1.1.1"
+    "1.0.0.1"
+    "8.8.8.8"
+    "8.8.4.4"
+    "77.88.8.8"
+    "77.88.8.1"
+  ];
 
   services.yggdrasil = {
     enable         = true;
@@ -165,6 +167,8 @@
     screen
     ffmpeg
     nixd
+    nixfmt-rfc-style
+    statix
     cloudflare-warp
     cloudflared
     compsize
