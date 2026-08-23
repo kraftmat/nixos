@@ -57,6 +57,7 @@
     mumble
 	irssi
 	compsize
+	valent
 
   ] ++ lib.optionals hostConfig.enableLact [
     pkgs.lact
@@ -111,6 +112,12 @@
       $DRY_RUN_CMD ${pkgs.micro}/bin/micro -plugin install lsp || true
       $DRY_RUN_CMD ${pkgs.micro}/bin/micro -plugin install filemanager || true
     '';
+
+  dconf.settings = {
+    "org/gnome/nautilus/preferences" = {
+      show-image-thumbnails = "always";
+    };
+  };
   
   # ── EasyEffects ───────────────────────────────────────────────────────────
   services.easyeffects.enable = true;

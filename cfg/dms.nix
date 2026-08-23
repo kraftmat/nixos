@@ -56,6 +56,7 @@ in {
       hostnameWidget.enable = true;
       nixPackageRunner.enable = true;
       quickCapture.enable = true;
+      dankKDEConnect.enable = true;
     };
     settings = builtins.fromJSON ''
 {
@@ -716,6 +717,10 @@ in {
         {
           "enabled": true,
           "id": "easyEffects"
+        },
+        {
+          "id": "dankKDEConnect",
+          "enabled": true
         },
         {
           "enabled": true,

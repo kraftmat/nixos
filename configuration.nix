@@ -98,6 +98,12 @@
     "77.88.8.1"
   ];
 
+  networking.firewall = {
+    enable = true;
+    allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+    allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
+  };
+
   services.yggdrasil = {
     enable         = true;
     settings = {
@@ -172,7 +178,13 @@
     cloudflare-warp
     cloudflared
     compsize
+    valent
   ];
+  
+  programs.kdeconnect = {
+    enable = true;
+    package = pkgs.valent;
+  };
   
   programs.steam = {
   enable = true; 
@@ -183,7 +195,8 @@
   services.upower.enable = lib.mkIf hostConfig.isLaptop true;
   programs.gamemode.enable = true;
   virtualisation.docker.enable = true;
-
+  services.gvfs.enable = true;
+  
   # ── Throne ────────────────────────────────────────────────────────────────
   programs.throne = {
     enable         = true;
