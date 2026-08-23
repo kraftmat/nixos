@@ -12,7 +12,7 @@
   boot.supportedFilesystems = [ "btrfs" ];
 
   # ── Ядро ──────────────────────────────────────────────────────────────────
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_stable;
   boot.kernelParams         = hostConfig.kernelParams;
   boot.initrd.kernelModules = hostConfig.initrdModules;
   boot.extraModulePackages = with config.boot.kernelPackages; [
@@ -178,6 +178,7 @@
   enable = true; 
   remotePlay.openFirewall = true;
   dedicatedServer.openFirewall = true; 
+  protontricks.enable = true;
   };
   services.upower.enable = lib.mkIf hostConfig.isLaptop true;
   programs.gamemode.enable = true;
