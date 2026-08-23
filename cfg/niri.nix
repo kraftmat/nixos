@@ -331,9 +331,9 @@ xdg.configFile."niri/config.kdl".text = ''
         Mod+Shift+Minus { set-window-height "-10%"; }
         Mod+Shift+Equal { set-window-height "+10%"; }
 
-        Mod+Shift+S { screenshot; }
-        Mod+Shift+W { screenshot-window; }
-        Mod+Shift+A { screenshot-screen; }
+        Mod+Shift+S { spawn-sh "dms ipc call quickCapture screenshot region edit"; }
+        Mod+Shift+W { spawn-sh "dms ipc call quickCapture screenshot window edit"; }
+        Mod+Shift+A { spawn-sh "dms ipc call quickCapture screenshot full edit"; }
 
         Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
         Mod+Shift+P { power-off-monitors; }
