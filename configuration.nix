@@ -3,10 +3,12 @@
 {
 
   # ── Загрузчик ─────────────────────────────────────────────────────────────
-  boot.loader.systemd-boot.enable      = true;
+  boot.loader.systemd-boot.enable = false; # сустемд вирусня
+  boot.loader.limine.enable = true;
+  boot.loader.limine.efiSupport = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint     = "/boot";
-  boot.loader.systemd-boot.configurationLimit = 15;
+  boot.loader.efi.efiSysMountPoint = "/boot";
+  boot.loader.limine.style.wallpapers = [ ./wallpapers/7.jpg ];
 
   # ── Файловая система ───────────────────────────────────────────────────────
   boot.supportedFilesystems = [ "btrfs" ];
@@ -45,7 +47,7 @@
   };
   services.xserver.videoDrivers = hostConfig.videoDrivers;
 
-  # NVIDIA Optimus (только для ноута)
+  # NVIDIA Optimus
   hardware.nvidia = lib.mkIf (hostConfig.nvidia != null) {
     modesetting.enable = true;
     powerManagement = {
@@ -65,7 +67,7 @@
     };
   };
 
-  # LACT — управление AMD GPU (только для ПК)
+  # LACT
   systemd.services.lact = lib.mkIf hostConfig.enableLact {
     description = "AMDGPU Control Daemon";
     enable      = true;
@@ -75,7 +77,7 @@
     wantedBy = [ "multi-user.target" ];
   };
 
-  # power profiles daemon  — управление питанием (только для ноута)
+  # power profiles daemon
   services.power-profiles-daemon.enable = lib.mkIf hostConfig.isLaptop true;
 
   # ── Zram ──────────────────────────────────────────────────────────────────
