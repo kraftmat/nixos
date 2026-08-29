@@ -127,7 +127,7 @@ in {
   "blurBorderOpacity": 0.35,
   "wallpaperFillMode": "Fill",
   "blurredWallpaperLayer": false,
-  "blurWallpaperOnOverview": false,
+  "blurWallpaperOnOverview": true,
   "wallpaperBackgroundColorMode": "black",
   "wallpaperBackgroundCustomColor": "#000000",
   "showLauncherButton": true,
