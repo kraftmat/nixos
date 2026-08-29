@@ -14,6 +14,7 @@
     xwayland-satellite
     wl-clipboard
     brightnessctl
+    pwvucontrol
     libinput
     evtest
     playerctl
