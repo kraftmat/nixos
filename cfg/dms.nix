@@ -11,11 +11,6 @@ let
     sed -i 's/"pgrep", "-x"/"pgrep", "-f"/' "$out/EasyEffectsWidget.qml"
   '';
 
-  pureLyrics = pkgs.fetchgit {
-    url = "https://github.com/lildengzi/pureLyrics";
-    rev = "6a803e11110a858779da0be20eeb2f724ed28441";
-    hash = "sha256-qKh+AUsh+dBU/aGLGvXdrmWGzegSm0mFwTQ3xuDFK7M=";
-  };
 in {
   programs.dank-material-shell = {
     enable = true;
@@ -46,10 +41,6 @@ in {
         settings = {
           checkUpdates = false;
         };
-      };
-      pureLyrics = {
-        enable = true;
-        src = pureLyrics;
       };
       screenkey.enable = false;
       screenOff.enable = true;
@@ -825,38 +816,7 @@ in {
       "enabled": true
     }
   },
-  "desktopWidgetInstances": [
-    {
-      "id": "dw_1787477438536_ojwnb7eqp",
-      "widgetType": "pureLyrics",
-      "name": "Pure Lyrics",
-      "enabled": true,
-      "config": {
-        "displayPreferences": [
-          "all"
-        ],
-        "lineCount": "7",
-        "fontSize": 36,
-        "backgroundOpacity": 0,
-        "borderOpacity": 0,
-        "colorMode": "custom",
-        "customColor": {},
-        "showOnOverlay": false,
-        "showOnOverview": false,
-        "source1": "musixmatch",
-        "source3": "lrclib",
-        "musixmatchToken": "260823f0f4bee07c29abf1b10dcfbae3855ae07e562c10007d9ba9"
-      },
-      "positions": {
-        "DP-1": {
-          "width": 1920,
-          "height": 1040,
-          "x": 0,
-          "y": 40
-        }
-      }
-    }
-  ],
+  "desktopWidgetInstances": [],
   "desktopWidgetGroups": [],
   "builtInPluginSettings": {
     "dms_clipboard_search": {
