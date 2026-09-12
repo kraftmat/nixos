@@ -53,7 +53,7 @@
     inter
     go
     gamescope
-    pragha
+    strawberry
     hyfetch
     mumble
 	irssi

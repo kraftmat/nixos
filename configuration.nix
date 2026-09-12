@@ -181,6 +181,7 @@
     cloudflared
     compsize
     valent
+    pulseaudio
   ];
   
   programs.kdeconnect = {
