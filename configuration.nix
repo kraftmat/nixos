@@ -12,6 +12,7 @@
 
   # ── Файловая система ───────────────────────────────────────────────────────
   boot.supportedFilesystems = [ "btrfs" ];
+  services.fstrim.enable = true;
 
   # ── Ядро ──────────────────────────────────────────────────────────────────
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_stable;

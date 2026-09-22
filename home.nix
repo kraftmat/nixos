@@ -53,7 +53,7 @@
     inter
     go
     gamescope
-    strawberry
+    pkgs-stable.strawberry
     hyfetch
     mumble
 	irssi
