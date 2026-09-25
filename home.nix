@@ -97,7 +97,7 @@
   
   # ── EasyEffects ───────────────────────────────────────────────────────────
   services.easyeffects.enable = true;
-  xdg.configFile."easyeffects/output/AutoEq.json".source = ./cfg/EF.json;
+  
 
   # ыы  дискорд  ыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыы
 	programs.equibop = {
@@ -126,7 +126,7 @@
 	        BlurNSFW.enabled = true; 
 	        NoMiddleClickPaste.enabled = true;
 	        NoPushToTalk.enabled = true; 
-	        NoReplayMention.enabled = true;
+	        NoReplyMention.enabled = true;
 	        ServerInfo.enabled = true;
 	        Timezones.enabled = true;
 	        ShowHiddenChannels.enabled =true;
