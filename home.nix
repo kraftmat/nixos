@@ -123,6 +123,14 @@
 	        FakeNitro.enabled = true;
 	        QuickReply.enabled = true;
 	        NoBlockedMessages.enabled = true;
+	        BlurNSFW.enabled = true; 
+	        NoMiddleClickPaste.enabled = true;
+	        NoPushToTalk.enabled = true; 
+	        NoReplayMention.enabled = true;
+	        ServerInfo.enabled = true;
+	        Timezones.enabled = true;
+	        ShowHiddenChannels.enabled =true;
+	        ReadAllNotificationsButton.enabled = true; 
 	        MessageLogger = {
 	          enabled = true;
 	          ignoreSelf = true;
