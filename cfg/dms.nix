@@ -31,8 +31,7 @@ in {
       dankBatteryAlerts.enable = false;
       bongoCat.enable = true;
       warpToggle.enable = true;
-      dockerManager.enable = true;
-      easyEffects = {
+            easyEffects = {
         enable = true;
         src = lib.mkForce patchedEasyEffects;
       };
@@ -700,10 +699,6 @@ in {
         {
           "enabled": true,
           "id": "keyboard_layout_name"
-        },
-        {
-          "enabled": true,
-          "id": "dockerManager"
         },
         {
           "enabled": true,

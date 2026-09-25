@@ -28,9 +28,8 @@
     gnome-system-monitor
     bibata-cursors
     morewaita-icon-theme
-    vesktop
     gh
-    steam # mangohud gamemoderun XKB_DEFAULT_LAYOUT=us,ru XKB_DEFAULT_OPTIONS=grp:caps_toggle gamescope --expose-wayland -- %command%
+    steam 
     gamemode
     mangohud
     protonup-qt
@@ -43,7 +42,7 @@
     deadlock-mod-manager
     materialgram
     thunderbird
-    (bottles.override { removeWarningPopup = true; })
+    lutris
     btrfs-assistant
     adw-gtk3
     (inputs.fjordlauncher.packages.${pkgs.stdenv.hostPlatform.system}.fjordlauncher.override {
@@ -64,30 +63,6 @@
     pkgs.lact
     pkgs.llama-cpp-vulkan
   ];
-
-  programs.opencode = {
-    enable = true;
-    settings = {
-      "$schema" = "https://opencode.ai/config.json";
-      lsp = true;
-      provider = {
-        "llama.cpp" = {
-          npm = "@ai-sdk/openai-compatible";
-          name = "llama-server (local)";
-          options.baseURL = "http://127.0.0.1:8080/v1";
-          models = {
-            "qwen-coder" = {
-              name = "Qwen2.5 Coder 7B (local)";
-              limit = {
-                context = 32768;
-                output  = 8192;
-              };
-            };
-          };
-        };
-      };
-    };
-  };
 
    programs.obs-studio = {
     enable = true;
@@ -123,6 +98,39 @@
   # ── EasyEffects ───────────────────────────────────────────────────────────
   services.easyeffects.enable = true;
   xdg.configFile."easyeffects/output/AutoEq.json".source = ./cfg/EF.json;
+
+  # ыы  дискорд  ыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыы
+	programs.equibop = {
+	  enable = true;
+	  settings = {
+	    arRPC = true;
+	    checkUpdates = true;
+	    customTitleBar = false;
+	    disableMinSize = true;
+	    minimizeToTray = true;
+	    tray = true;
+	    splashTheming = true;
+	    staticTitle = true;
+	    hardwareAcceleration = true;
+	    discordBranch = "stable";
+	  };
+	  equicord = {
+	    extraQuickCss = builtins.readFile ./cfg/dank-discord.css;
+	    settings = {
+	      notifyAboutUpdates = false;
+	      useQuickCss = true;
+	      plugins = {
+	        FakeNitro.enabled = true;
+	        QuickReply.enabled = true;
+	        NoBlockedMessages.enabled = true;
+	        MessageLogger = {
+	          enabled = true;
+	          ignoreSelf = true;
+	        };
+	      };
+	    };
+	  };
+	};
 
   # ── nixMonitor plugin config ──────────────────────────────────────────────
   xdg.configFile."DankMaterialShell/plugins/NixMonitor/config.json".text = builtins.toJSON {
