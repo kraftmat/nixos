@@ -22,6 +22,7 @@
     yt-dlp
     btop
     nautilus
+    papers
     showtime
     loupe
     gnome-clocks

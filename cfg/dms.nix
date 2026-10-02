@@ -658,6 +658,11 @@ in {
         {
           "enabled": true,
           "id": "nixMonitor"
+        },
+        {
+          "id": "music",
+          "enabled": true,
+          "mediaSize": 3
         }
       ],
       "maximizeDetection": true,

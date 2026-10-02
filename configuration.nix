@@ -9,7 +9,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
   boot.loader.limine.style.wallpapers = [ ./wallpapers/7.jpg ];
-
+  
   # ── Файловая система ───────────────────────────────────────────────────────
   boot.supportedFilesystems = [ "btrfs" ];
   services.fstrim.enable = true;
