@@ -191,6 +191,8 @@
   shellAliases = {
     build-switch = "sudo nixos-rebuild switch --flake ${flakePath} --option substituters 'https://cache.nixos.org'";
     build-boot   = "sudo nixos-rebuild boot   --flake ${flakePath} --option substituters 'https://cache.nixos.org'";
+    build-switch-slow = "sudo nixos-rebuild switch --flake ${flakePath} --option substituters 'https://cache.nixos.org' --cores (math -s0 (nproc) '* 40 / 100')";
+    build-boot-slow   = "sudo nixos-rebuild boot   --flake ${flakePath} --option substituters 'https://cache.nixos.org' --cores (math -s0 (nproc) '* 40 / 100')";
     ll           = "ls -lah";
   };
   };
