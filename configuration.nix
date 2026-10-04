@@ -3,16 +3,19 @@
 {
 
   # ── Загрузчик ─────────────────────────────────────────────────────────────
-  boot.loader.systemd-boot.enable      = true;
+  boot.loader.systemd-boot.enable = false; # сустемд вирусня
+  boot.loader.limine.enable = true;
+  boot.loader.limine.efiSupport = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint     = "/boot";
-  boot.loader.systemd-boot.configurationLimit = 15;
-
+  boot.loader.efi.efiSysMountPoint = "/boot";
+  boot.loader.limine.style.wallpapers = [ ./wallpapers/7.jpg ];
+  
   # ── Файловая система ───────────────────────────────────────────────────────
   boot.supportedFilesystems = [ "btrfs" ];
+  services.fstrim.enable = true;
 
   # ── Ядро ──────────────────────────────────────────────────────────────────
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_stable;
   boot.kernelParams         = hostConfig.kernelParams;
   boot.initrd.kernelModules = hostConfig.initrdModules;
   boot.extraModulePackages = with config.boot.kernelPackages; [
@@ -45,7 +48,7 @@
   };
   services.xserver.videoDrivers = hostConfig.videoDrivers;
 
-  # NVIDIA Optimus (только для ноута)
+  # NVIDIA Optimus
   hardware.nvidia = lib.mkIf (hostConfig.nvidia != null) {
     modesetting.enable = true;
     powerManagement = {
@@ -65,7 +68,7 @@
     };
   };
 
-  # LACT — управление AMD GPU (только для ПК)
+  # LACT
   systemd.services.lact = lib.mkIf hostConfig.enableLact {
     description = "AMDGPU Control Daemon";
     enable      = true;
@@ -75,7 +78,7 @@
     wantedBy = [ "multi-user.target" ];
   };
 
-  # power profiles daemon  — управление питанием (только для ноута)
+  # power profiles daemon
   services.power-profiles-daemon.enable = lib.mkIf hostConfig.isLaptop true;
 
   # ── Zram ──────────────────────────────────────────────────────────────────
@@ -87,13 +90,21 @@
   # ── Сеть ──────────────────────────────────────────────────────────────────
   networking.hostName              = hostName;
   networking.networkmanager.enable = true;
-  networking.interfaces.enp3s0.wakeOnLan.enable = true; 
+  networking.interfaces.enp3s0.wakeOnLan.enable = true;
+  networking.networkmanager.dns = "none";
+  networking.nameservers = [
+    "1.1.1.1"
+    "1.0.0.1"
+    "8.8.8.8"
+    "8.8.4.4"
+    "77.88.8.8"
+    "77.88.8.1"
+  ];
+
   networking.firewall = {
-    allowedUDPPorts = [ 9993 ];
-    allowedTCPPorts = [ 27040 24070 ];
-    allowedUDPPortRanges = [
-      { from = 27031; to = 27036; }
-    ];
+    enable = true;
+    allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+    allowedUDPPortRanges = [ { from = 1714; to = 1764; } ];
   };
 
   services.yggdrasil = {
@@ -114,7 +125,7 @@
   
 
   systemd.services.zapret-home = {
-  	enable 		= false;
+  	enable 		= true;
     description = "Zapret";
     after       = [ "network.target" ];
     wantedBy    = [ "multi-user.target" ];
@@ -165,20 +176,33 @@
     screen
     ffmpeg
     nixd
+    nixfmt
+    statix
     cloudflare-warp
     cloudflared
     compsize
+    valent
+    docker-compose
+    pulseaudio
   ];
+  
+  programs.kdeconnect = {
+    enable = true;
+    package = pkgs.valent;
+  };
+
+  virtualisation.docker.enable = false;
   
   programs.steam = {
   enable = true; 
   remotePlay.openFirewall = true;
   dedicatedServer.openFirewall = true; 
+  protontricks.enable = true;
   };
   services.upower.enable = lib.mkIf hostConfig.isLaptop true;
   programs.gamemode.enable = true;
-  virtualisation.docker.enable = true;
-
+  services.gvfs.enable = true;
+  
   # ── Throne ────────────────────────────────────────────────────────────────
   programs.throne = {
     enable         = true;
@@ -210,28 +234,6 @@
       dates     = "weekly";
       options   = "--delete-older-than 7d";
     };
-
-  # ── Snapper  ──────────────────────────────────────────────────────────────
-  services.snapper = {
-    snapshotInterval = "hourly";
-    cleanupInterval  = "1d";
-    configs.home = {
-      SUBVOLUME        = "/home";
-      ALLOW_USERS      = [ "kraftmat" ];
-      TIMELINE_CREATE  = true;
-      TIMELINE_CLEANUP = true;
-      TIMELINE_MIN_AGE    = "1800";
-      TIMELINE_LIMIT_HOURLY  = "5";
-      TIMELINE_LIMIT_DAILY   = "7";
-      TIMELINE_LIMIT_WEEKLY  = "0";
-      TIMELINE_LIMIT_MONTHLY = "0";
-      TIMELINE_LIMIT_YEARLY  = "0";
-    };
-  };
-
-  systemd.tmpfiles.rules = [
-    "d /home/.snapshots 0750 root kraftmat -"
-  ];
   # ── Звук ──────────────────────────────────────────────────────────────────
   services.pipewire = {
     enable             = true;

@@ -86,7 +86,7 @@ xdg.configFile."niri/config.kdl".text = ''
         XDG_CURRENT_DESKTOP "niri"
         QT_QPA_PLATFORMTHEME "qt6ct"
         ELECTRON_OZONE_PLATFORM_HINT "auto"
-        TERMINAL "kitty --single-instance"
+        TERMINAL "ghostty"
     }
 
     hotkey-overlay {
@@ -177,7 +177,7 @@ xdg.configFile."niri/config.kdl".text = ''
         Mod+Tab repeat=false { toggle-overview; }
         Mod+Shift+B { show-hotkey-overlay; }
 
-        Mod+Return { spawn "kitty" "--single-instance"; }
+        Mod+Return { spawn "ghostty"; }
         Mod+R hotkey-overlay-title="Application Launcher" {
             spawn "dms" "ipc" "call" "spotlight-bar" "toggle";
         }
@@ -315,7 +315,7 @@ xdg.configFile."niri/config.kdl".text = ''
 
         Mod+W { spawn "floorp"; }
         Mod+E { spawn "nautilus"; }
-        Mod+Shift+D { spawn "vesktop"; }
+        Mod+Shift+D { spawn "equibop"; }
         Pause { spawn "playerctl" "play-pause"; }
         MouseBack { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
         Shift+MouseBack { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
@@ -331,9 +331,9 @@ xdg.configFile."niri/config.kdl".text = ''
         Mod+Shift+Minus { set-window-height "-10%"; }
         Mod+Shift+Equal { set-window-height "+10%"; }
 
-        Mod+Shift+S { screenshot; }
-        Mod+Shift+W { screenshot-window; }
-        Mod+Shift+A { screenshot-screen; }
+        Mod+Shift+S { spawn-sh "dms ipc call quickCapture screenshot region edit"; }
+        Mod+Shift+W { spawn-sh "dms ipc call quickCapture screenshot window edit"; }
+        Mod+Shift+A { spawn-sh "dms ipc call quickCapture screenshot full edit"; }
 
         Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
         Mod+Shift+P { power-off-monitors; }

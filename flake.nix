@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    happ-nix.url = "github:DaHL-gh/happ-nix";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
@@ -27,7 +26,7 @@
 
   };
 
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, dms, dms-plugin-registry, fjordlauncher, nur, happ-nix, ... } @ inputs:
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, dms, dms-plugin-registry, fjordlauncher, nur, ... } @ inputs:
   let
     sharedOverlays = [
       nur.overlays.default
@@ -62,12 +61,6 @@
           home-manager.nixosModules.home-manager
 
           { nixpkgs.overlays = sharedOverlays; }
-
-          inputs.happ-nix.nixosModules.default
-          { programs.happ = {
-            enable = true;
-            tunMode.enable = true;
-          }; }
 
           ({ pkgs, ... }: {
             nix.settings = {

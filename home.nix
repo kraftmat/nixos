@@ -10,9 +10,11 @@
 
   # ── Пакеты ────────────────────────────────────────────────────────────────
   home.packages = with pkgs; [
+  	krita
     xwayland-satellite
     wl-clipboard
     brightnessctl
+    pwvucontrol
     libinput
     evtest
     playerctl
@@ -20,15 +22,15 @@
     yt-dlp
     btop
     nautilus
+    papers
     showtime
     loupe
     gnome-clocks
     gnome-system-monitor
     bibata-cursors
     morewaita-icon-theme
-    vesktop
     gh
-    steam # mangohud gamemoderun XKB_DEFAULT_LAYOUT=us,ru XKB_DEFAULT_OPTIONS=grp:caps_toggle gamescope --expose-wayland -- %command%
+    steam 
     gamemode
     mangohud
     protonup-qt
@@ -37,11 +39,11 @@
     nerd-fonts.jetbrains-mono
     inter-nerdfont
     qbittorrent
-    wine
+	wineWow64Packages.stable
     deadlock-mod-manager
     materialgram
     thunderbird
-    (bottles.override { removeWarningPopup = true; })
+    lutris
     btrfs-assistant
     adw-gtk3
     (inputs.fjordlauncher.packages.${pkgs.stdenv.hostPlatform.system}.fjordlauncher.override {
@@ -51,41 +53,17 @@
     inter
     go
     gamescope
-    pear-desktop
-    pragha
+    pkgs-stable.strawberry
     hyfetch
     mumble
 	irssi
 	compsize
+	valent
 
   ] ++ lib.optionals hostConfig.enableLact [
     pkgs.lact
     pkgs.llama-cpp-vulkan
   ];
-
-  programs.opencode = {
-    enable = true;
-    settings = {
-      "$schema" = "https://opencode.ai/config.json";
-      lsp = true;
-      provider = {
-        "llama.cpp" = {
-          npm = "@ai-sdk/openai-compatible";
-          name = "llama-server (local)";
-          options.baseURL = "http://127.0.0.1:8080/v1";
-          models = {
-            "qwen-coder" = {
-              name = "Qwen2.5 Coder 7B (local)";
-              limit = {
-                context = 32768;
-                output  = 8192;
-              };
-            };
-          };
-        };
-      };
-    };
-  };
 
    programs.obs-studio = {
     enable = true;
@@ -98,10 +76,70 @@
     ];
   };
 
+  programs.micro = {
+  	settings = {
+  	clipboard = "terminal";
+  	colorscheme = "solarized";
+  	hlsearch = true;
+  	lsp = true;
+  	filemanager = true;
+  	};
+  };
+  home.activation.installMicroLsp = config.lib.dag.entryAfter [ "writeBoundary" ] ''
+      $DRY_RUN_CMD ${pkgs.micro}/bin/micro -plugin install lsp || true
+      $DRY_RUN_CMD ${pkgs.micro}/bin/micro -plugin install filemanager || true
+    '';
 
+  dconf.settings = {
+    "org/gnome/nautilus/preferences" = {
+      show-image-thumbnails = "always";
+    };
+  };
+  
   # ── EasyEffects ───────────────────────────────────────────────────────────
   services.easyeffects.enable = true;
-  xdg.configFile."easyeffects/output/AutoEq.json".source = ./cfg/EF.json;
+  
+
+  # ыы  дискорд  ыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыы
+	programs.equibop = {
+	  enable = true;
+	  settings = {
+	    arRPC = true;
+	    checkUpdates = true;
+	    customTitleBar = false;
+	    disableMinSize = true;
+	    minimizeToTray = true;
+	    tray = true;
+	    splashTheming = true;
+	    staticTitle = true;
+	    hardwareAcceleration = true;
+	    discordBranch = "stable";
+	  };
+	  equicord = {
+	    extraQuickCss = builtins.readFile ./cfg/dank-discord.css;
+	    settings = {
+	      notifyAboutUpdates = false;
+	      useQuickCss = true;
+	      plugins = {
+	        FakeNitro.enabled = true;
+	        QuickReply.enabled = true;
+	        NoBlockedMessages.enabled = true;
+	        BlurNSFW.enabled = true; 
+	        NoMiddleClickPaste.enabled = true;
+	        NoPushToTalk.enabled = true; 
+	        NoReplyMention.enabled = true;
+	        ServerInfo.enabled = true;
+	        Timezones.enabled = true;
+	        ShowHiddenChannels.enabled =true;
+	        ReadAllNotificationsButton.enabled = true; 
+	        MessageLogger = {
+	          enabled = true;
+	          ignoreSelf = true;
+	        };
+	      };
+	    };
+	  };
+	};
 
   # ── nixMonitor plugin config ──────────────────────────────────────────────
   xdg.configFile."DankMaterialShell/plugins/NixMonitor/config.json".text = builtins.toJSON {
@@ -156,22 +194,30 @@
     ll           = "ls -lah";
   };
   };
-  # ── Kitty ─────────────────────────────────────────────────────────────────
-  programs.kitty = {
-    enable   = true;
-    settings = {
-      confirm_os_window_close = 0;
-      dynamic_background_opacity = true;
-      window_padding_width       = 15;
-      font_family                = "JetBrainsMono Nerd Font";
-      font_size                  = 12;
-    };
-    extraConfig = ''
-      include dank-theme.conf
-      include dank-tabs.conf
-    '';
+  # ── Ghostty ───────────────────────────────────────────────────────────────
+  programs.ghostty = {
+  	enable                = true;
+  	enableFishIntegration = true; 
+  	settings = {
+  	theme                           = "dankcolors";
+  	font-family                     = "JetBrainsMono Nerd Font";
+  	font-size                       = 12;
+  	window-padding-y                = 15;
+  	window-padding-x                = 15; 
+  	notify-on-command-finish        = "unfocused";
+  	right-click-action              = "ignore";
+  	notify-on-command-finish-action = "notify";
+  	clipboard-read                  = "allow";
+  	clipboard-write                 = "allow";
+  	  	keybind = [
+  		"performable:ctrl+c=copy_to_clipboard"
+  		"alt+t=new_tab"
+  		"alt+c=close_surface"
+  		"alt+x=next_tab"
+  		"alt+z=previous_tab"
+  	];
+  	};
   };
-
   # ── Cursor ────────────────────────────────────────────────────────────────
   home.pointerCursor = {
     gtk.enable = true;
