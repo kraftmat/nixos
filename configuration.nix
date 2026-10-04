@@ -223,6 +223,7 @@
 
   # ── Nix ───────────────────────────────────────────────────────────────────
     nix.settings = {
+      trusted-users = [ "root" "kraftmat" ];
       experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store   = true;   
       min-free = 3  * 1024 * 1024 * 1024;  

@@ -10,7 +10,6 @@
 
   # ── Пакеты ────────────────────────────────────────────────────────────────
   home.packages = with pkgs; [
-  	krita
     xwayland-satellite
     wl-clipboard
     brightnessctl
