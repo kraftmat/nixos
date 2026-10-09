@@ -112,7 +112,7 @@
 	    splashTheming = true;
 	    staticTitle = true;
 	    hardwareAcceleration = true;
-	    discordBranch = "stable";
+	    discordBranch = "сanary";
 	  };
 	  equicord = {
 	    extraQuickCss = builtins.readFile ./cfg/dank-discord.css;
