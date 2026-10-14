@@ -30,16 +30,16 @@
   let
     sharedOverlays = [
       nur.overlays.default
-      (final: prev: {
-        openldap = prev.openldap.overrideAttrs (_: { doCheck = false; });
-
-        llama-cpp-rocm = (prev.llama-cpp.overrideAttrs (old: {
-          cmakeFlags = (old.cmakeFlags or []) ++ [
-            "-DGGML_HIP=ON"
-            "-DAMDGPU_TARGETS=gfx1030"
-          ];
-        })).override { rocmSupport = true; };
-      })
+#       (final: prev: {
+#         openldap = prev.openldap.overrideAttrs (_: { doCheck = false; });
+# 
+#         llama-cpp-rocm = (prev.llama-cpp.overrideAttrs (old: {
+#           cmakeFlags = (old.cmakeFlags or []) ++ [
+#             "-DGGML_HIP=ON"
+#             "-DAMDGPU_TARGETS=gfx1030"
+#           ];
+#         })).override { rocmSupport = true; };
+#       })
     ];
 
     mkPkgsUnstable = import nixpkgs-unstable {
