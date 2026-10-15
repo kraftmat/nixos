@@ -165,7 +165,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    micro
+  	micro
     git
     wget
     fastfetch
@@ -183,7 +183,9 @@
     docker-compose
     pulseaudio
   ];
-  
+
+  programs.nano.enable = false;
+    
   programs.kdeconnect = {
     enable = true;
     package = pkgs.valent;

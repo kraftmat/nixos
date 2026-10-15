@@ -76,6 +76,7 @@
   };
 
   programs.micro = {
+  	enable = true; 
   	settings = {
   	clipboard = "terminal";
   	colorscheme = "solarized";
@@ -180,6 +181,10 @@
   };
 
   # ── Fish ──────────────────────────────────────────────────────────────────
+  home.sessionVariables = {
+    EDITOR = "micro";
+  };
+  
   programs.fish = {
     enable = true;
 
@@ -274,5 +279,5 @@
   xdg.enable = true;
 
   home.stateVersion = "26.05";
-  home.enableNixpkgsReleaseCheck = false;
+  home.enableNixpkgsReleaseCheck = false; 
 }
