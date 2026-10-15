@@ -13,6 +13,12 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
+   fileSystems."/mnt/old" =
+    { device = "/dev/sda2";
+      fsType = "btrfs";
+      options = [ "subvol=@home" "compress=zstd" "noatime" "ssd" "discard=async" ];
+    };
+
   fileSystems."/" =
     { device = "/dev/nvme0n1p2";
       fsType = "btrfs";
