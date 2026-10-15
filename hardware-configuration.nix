@@ -13,35 +13,35 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-   fileSystems."/mnt/old" =
-    { device = "/dev/sda2";
-      fsType = "btrfs";
-      options = [ "subvol=@home" "compress=zstd" "noatime" "ssd" "discard=async" ];
-    };
+    fileSystems."/mnt/old" =
+      { device = "/dev/disk/by-uuid/1159e402-4167-4197-b414-08be8f35dfff";
+        fsType = "btrfs";
+        options = [ "subvol=@home" "compress=zstd" "noatime" "ssd" "discard=async" "nofail" ];
+      };
 
-  fileSystems."/" =
-    { device = "/dev/nvme0n1p2";
-      fsType = "btrfs";
-      options = [ "subvol=@" "compress=zstd" "noatime" "ssd" "discard=async" ];
-    };
+    fileSystems."/" =
+      { device = "/dev/disk/by-uuid/6500df5e-9a01-4dc4-a0d7-3996cf997de6";
+        fsType = "btrfs";
+        options = [ "subvol=@" "compress=zstd" "noatime" "ssd" "discard=async" ];
+      };
 
-  fileSystems."/home" =
-    { device = "/dev/nvme0n1p2";
-      fsType = "btrfs";
-      options = [ "subvol=@home" "compress=zstd" "noatime" "ssd" "discard=async" ];
-    };
+    fileSystems."/home" =
+      { device = "/dev/disk/by-uuid/6500df5e-9a01-4dc4-a0d7-3996cf997de6";
+        fsType = "btrfs";
+        options = [ "subvol=@home" "compress=zstd" "noatime" "ssd" "discard=async" ];
+      };
 
-  fileSystems."/nix" =
-    { device = "/dev/nvme0n1p2";
-      fsType = "btrfs";
-      options = [ "subvol=@nix" "compress=zstd" "noatime" "ssd" "discard=async" ];
-    };
+    fileSystems."/nix" =
+      { device = "/dev/disk/by-uuid/6500df5e-9a01-4dc4-a0d7-3996cf997de6";
+        fsType = "btrfs";
+        options = [ "subvol=@nix" "compress=zstd" "noatime" "ssd" "discard=async" ];
+      };
 
-  fileSystems."/boot" =
-    { device = "/dev/nvme0n1p1";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
+    fileSystems."/boot" =
+      { device = "/dev/disk/by-uuid/8225-92AF";
+        fsType = "vfat";
+        options = [ "fmask=0022" "dmask=0022" ];
+      };
 
   swapDevices = [ ];
 
