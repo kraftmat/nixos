@@ -15,17 +15,12 @@
     brightnessctl
     pwvucontrol
     libinput
-    evtest
     playerctl
     cliphist
-    yt-dlp
     btop
     nautilus
-    papers
     showtime
     loupe
-    gnome-clocks
-    gnome-system-monitor
     bibata-cursors
     morewaita-icon-theme
     gh
@@ -39,11 +34,8 @@
     inter-nerdfont
     qbittorrent
 	wineWow64Packages.stable
-    deadlock-mod-manager
     materialgram
     thunderbird
-    lutris
-    btrfs-assistant
     adw-gtk3
     (inputs.fjordlauncher.packages.${pkgs.stdenv.hostPlatform.system}.fjordlauncher.override {
       jdks = with pkgs; [ zulu zulu21 zulu17 temurin-bin-17  zulu8 zulu25 ];
@@ -53,9 +45,6 @@
     go
     gamescope
     pkgs-stable.strawberry
-    hyfetch
-    mumble
-	irssi
 	compsize
 	valent
 
@@ -193,6 +182,8 @@
     '';
 
   shellAliases = {
+  	cn = "cd /etc/nixos";
+  	ed = "micro";
     build-switch = "sudo nixos-rebuild switch --flake ${flakePath} --option substituters 'https://cache.nixos.org'";
     build-boot   = "sudo nixos-rebuild boot   --flake ${flakePath} --option substituters 'https://cache.nixos.org'";
     build-switch-slow = "sudo nixos-rebuild switch --flake ${flakePath} --option substituters 'https://cache.nixos.org' --cores (math -s0 (nproc) '* 40 / 100')";
