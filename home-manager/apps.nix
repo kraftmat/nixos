@@ -44,7 +44,7 @@
       splashTheming = true;
       staticTitle = true;
       hardwareAcceleration = true;
-      discordBranch = "сanary";
+      discordBranch = "canary";
     };
     equicord = {
       extraQuickCss = builtins.readFile ./cfg/dank-discord.css;
