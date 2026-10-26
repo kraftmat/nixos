@@ -10,6 +10,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    yapfast = {
+         url = "github:yapfast/yapfast";
+        };
+
     nur.url = "github:nix-community/NUR";
 
     dms = {
@@ -26,7 +30,7 @@
 
   };
 
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, dms, dms-plugin-registry, fjordlauncher, nur, ... } @ inputs:
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, dms, dms-plugin-registry, fjordlauncher, nur, yapfast, ... } @ inputs:
   let
     sharedOverlays = [
       nur.overlays.default
@@ -51,7 +55,7 @@
       nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-          inherit inputs dms dms-plugin-registry fjordlauncher;
+          inherit inputs dms dms-plugin-registry fjordlauncher yapfast;
           hostName   = hostname;
           inherit hostConfig;
         };
@@ -73,7 +77,7 @@
               useUserPackages = true;
               backupFileExtension = "backup";
               extraSpecialArgs = {
-                inherit inputs dms dms-plugin-registry fjordlauncher;
+                inherit inputs dms dms-plugin-registry fjordlauncher yapfast;
                 hostName    = hostname;
                 flakePath   = "/etc/nixos#${hostname}";
                 hostConfig  = hmHostConfig;

@@ -1,4 +1,4 @@
-{ config, pkgs, lib, pkgs-stable, inputs, fjordlauncher, hostName, flakePath, hostConfig, ... }:
+{ config, pkgs, lib, pkgs-stable, inputs, fjordlauncher, yapfast, hostName, flakePath, hostConfig, ... }:
 
 {
   imports = [
@@ -47,6 +47,8 @@
     pkgs-stable.strawberry
 	compsize
 	valent
+	pkgs-stable.opencode
+	yapfast.packages.${pkgs.system}.yapfast
 
   ] ++ lib.optionals hostConfig.enableLact [
     pkgs.lact

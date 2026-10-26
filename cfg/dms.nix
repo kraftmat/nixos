@@ -62,71 +62,197 @@
     settings = builtins.fromJSON ''
 {
   "currentThemeName": "dynamic",
-  "currentThemeCategory": "dynamic",
   "customThemeFile": "/home/kraftmat/.config/DankMaterialShell/themes/amoledBlack/theme.json",
-  "dockTransparency": 0.85,
-  "cornerRadius": 12,
+  "radiusStrength": 38,
   "clockFormat": "24h",
+  "fontFamily": "Inter Nerd Font",
+  "monoFontFamily": "JetBrainsMono NF",
+  "powerActionConfirm": false,
+  "dockConfigs": [
+    {
+      "id": "dock",
+      "name": "Dock",
+      "enabled": false,
+      "screenPreferences": [
+        "all"
+      ],
+      "showOnLastDisplay": true,
+      "position": 1,
+      "mode": "compact",
+      "taskbarAlign": "center",
+      "widgetExpansion": "popout",
+      "iconSize": 40,
+      "spacing": 4,
+      "itemSpacing": 4,
+      "margin": 0,
+      "bottomGap": 0,
+      "transparency": 0.85,
+      "followInterfaceStyle": false,
+      "autoHide": false,
+      "smartAutoHide": false,
+      "useOverlayLayer": false,
+      "editOnRightClick": false,
+      "showOnFullscreen": false,
+      "openOnOverview": false,
+      "groupByApp": false,
+      "separatePinnedAndRunningApps": false,
+      "restoreSpecialWorkspaceOnClick": false,
+      "isolateDisplays": false,
+      "indicatorStyle": "circle",
+      "borderEnabled": false,
+      "borderColor": "surfaceText",
+      "borderOpacity": 1,
+      "borderThickness": 1,
+      "launcherEnabled": false,
+      "launcherLogoMode": "apps",
+      "launcherLogoCustomPath": "",
+      "launcherLogoColorOverride": "",
+      "launcherLogoSizeOffset": 0,
+      "launcherLogoBrightness": 0.5,
+      "launcherLogoContrast": 1,
+      "maxVisibleApps": 0,
+      "maxVisibleRunningApps": 0,
+      "showOverflowBadge": true,
+      "showTrash": false,
+      "trashFileManager": "default",
+      "trashCustomCommand": "",
+      "magnification": false,
+      "magnificationScale": 130,
+      "magnificationProfile": "parabolic",
+      "magnificationExpand": false,
+      "order": [],
+      "widgets": [
+        {
+          "id": "dock_launcher",
+          "widgetId": "dockLauncher",
+          "enabled": true
+        },
+        {
+          "id": "dock_apps",
+          "widgetId": "appsDock",
+          "enabled": true
+        },
+        {
+          "id": "dock_trash",
+          "widgetId": "dockTrash",
+          "enabled": true
+        }
+      ]
+    }
+  ],
+  "currentThemeCategory": "dynamic",
+  "dmsWindowsFloatingSeeded": [
+    "niri"
+  ],
   "barElevationEnabled": false,
   "blurWallpaperOnOverview": true,
-  "controlCenterShowMicPercent": true,
-  "privacyShowMicIcon": true,
   "controlCenterWidgets": [
+    {
+      "id": "user",
+      "enabled": true,
+      "w": 5,
+      "h": 1
+    },
+    {
+      "id": "settings",
+      "enabled": true,
+      "w": 1,
+      "h": 1,
+      "small": true
+    },
+    {
+      "id": "lock",
+      "enabled": true,
+      "w": 1,
+      "h": 1,
+      "small": true
+    },
+    {
+      "id": "power",
+      "enabled": true,
+      "w": 1,
+      "h": 1,
+      "small": true
+    },
     {
       "enabled": true,
       "id": "volumeSlider",
-      "width": 50
+      "w": 4,
+      "h": 1
     },
     {
       "deviceName": "backlight:intel_backlight",
       "enabled": true,
       "id": "brightnessSlider",
-      "width": 50
+      "w": 4,
+      "h": 1
     },
     {
       "enabled": true,
       "id": "wifi",
-      "width": 50
+      "w": 4,
+      "h": 1
     },
     {
       "enabled": true,
       "id": "bluetooth",
-      "width": 50
+      "w": 4,
+      "h": 1
     },
     {
       "enabled": true,
       "id": "audioOutput",
-      "width": 50
+      "w": 4,
+      "h": 1
     },
     {
       "enabled": true,
       "id": "audioInput",
-      "width": 50
+      "w": 4,
+      "h": 1
     },
     {
       "enabled": true,
       "id": "nightMode",
-      "width": 50
+      "w": 4,
+      "h": 1
     },
     {
       "enabled": true,
       "id": "darkMode",
-      "width": 50
+      "w": 4,
+      "h": 1
     },
     {
       "enabled": true,
       "id": "plugin_warpToggle",
-      "width": 50
+      "w": 4,
+      "h": 1
     },
     {
       "enabled": true,
       "id": "plugin_screenOff",
-      "width": 50
+      "w": 4,
+      "h": 1
+    },
+    {
+      "id": "edit",
+      "enabled": true,
+      "w": 1,
+      "h": 1,
+      "small": true
+    },
+    {
+      "id": "runningApps",
+      "enabled": true,
+      "w": 4,
+      "h": 1,
+      "small": true,
+      "col": 0,
+      "row": 7
     }
   ],
-  "showWorkspaceApps": true,
   "audioVisualizerEnabled": false,
-  "audioScrollMode": "nothing",
   "appIdSubstitutions": [],
   "dankLauncherV2UnloadOnClose": true,
   "launcherStyle": "spotlight",
@@ -146,13 +272,10 @@
     "size": 24,
     "theme": "System Default"
   },
-  "fontFamily": "Inter Nerd Font",
-  "monoFontFamily": "JetBrainsMono NF",
   "muxType": "zellij",
   "notificationOverlayEnabled": true,
   "notificationCompactMode": true,
   "osdPowerProfileEnabled": true,
-  "powerActionConfirm": false,
   "barConfigs": [
     {
       "autoHide": false,
@@ -178,7 +301,8 @@
       "leftWidgets": [
         {
           "enabled": true,
-          "id": "workspaceSwitcher"
+          "id": "workspaceSwitcher",
+          "showWorkspaceApps": true
         },
         {
           "enabled": true,
@@ -195,7 +319,8 @@
         {
           "enabled": true,
           "id": "music",
-          "mediaSize": 3
+          "mediaSize": 3,
+          "audioScrollMode": "nothing"
         }
       ],
       "maximizeDetection": true,
@@ -207,11 +332,11 @@
       "popupGapsAuto": true,
       "popupGapsManual": 4,
       "position": 0,
-      "removeWidgetPadding": false,
       "rightWidgets": [
         {
           "enabled": true,
-          "id": "privacyIndicator"
+          "id": "privacyIndicator",
+          "privacyShowMicIcon": true
         },
         {
           "enabled": true,
@@ -232,7 +357,8 @@
         },
         {
           "enabled": true,
-          "id": "controlCenterButton"
+          "id": "controlCenterButton",
+          "showMicPercent": true
         },
         {
           "enabled": true,
@@ -247,8 +373,8 @@
           "id": "dankKDEConnect"
         },
         {
-          "id": "codec",
-          "enabled": true
+          "enabled": true,
+          "id": "codec"
         },
         {
           "enabled": true,
@@ -259,7 +385,7 @@
         "all"
       ],
       "scrollEnabled": true,
-      "scrollXBehavior": "column",
+      "scrollXBehavior": "focusWindow",
       "scrollYBehavior": "workspace",
       "shadowColorMode": "text",
       "shadowCustomColor": "#000000",
@@ -277,35 +403,11 @@
       "widgetOutlineOpacity": 1,
       "widgetOutlineThickness": 1,
       "widgetPadding": 8,
-      "widgetTransparency": 1
+      "widgetTransparency": 1,
+      "followInterfaceStyle": true,
+      "widgetFollowInterfaceStyle": true
     }
   ],
-  "desktopClockCustomColor": {
-    "r": 1,
-    "g": 1,
-    "b": 1,
-    "a": 1,
-    "hsvHue": -1,
-    "hsvSaturation": 0,
-    "hsvValue": 1,
-    "hslHue": -1,
-    "hslSaturation": 0,
-    "hslLightness": 1,
-    "valid": true
-  },
-  "systemMonitorCustomColor": {
-    "r": 1,
-    "g": 1,
-    "b": 1,
-    "a": 1,
-    "hsvHue": -1,
-    "hsvSaturation": 0,
-    "hsvValue": 1,
-    "hslHue": -1,
-    "hslSaturation": 0,
-    "hslLightness": 1,
-    "valid": true
-  },
   "builtInPluginSettings": {
     "dms_clipboard_search": {
       "trigger": "cb"
@@ -314,7 +416,7 @@
       "trigger": "?"
     }
   },
-  "configVersion": 18
+  "configVersion": 42
 }'';
   };
 }
