@@ -65,9 +65,8 @@
         };
     in
     {
-      nixosConfigurations = {
-        kraftmat-pc = mkHost "pc";
-        kraftmat-laptop = mkHost "laptop";
-      };
+	nixosConfigurations = builtins.listToAttrs (map
+	  (name: { name = "commodore64-${name}"; value = mkHost name; })
+	  [ "pc" "laptop" ]);
     };
 }
