@@ -1,0 +1,11 @@
+{
+  "id": "codec",
+  "name": "codec",
+  "description": "xd",
+  "version": "1.0.0",
+  "author": "kraftmat",
+  "icon": "headphones",
+  "type": "widget",
+  "component": "./codec.qml",
+  "requires_dms": ">=1.5.0"
+}
