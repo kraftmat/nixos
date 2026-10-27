@@ -15,7 +15,7 @@
 
   # ── Ядро ──────────────────────────────────────────────────────────────────
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_stable;
-  # kernelParams и initrd.kernelModules задаются в hosts/<имя>/
+  # мб сменить ядро
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
   ];
