@@ -17,6 +17,7 @@
     morewaita-icon-theme
     gh
     steam
+    steam-run-free
     gamemode
     mangohud
     protonup-qt
