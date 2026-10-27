@@ -41,5 +41,6 @@
     valent
     pkgs-stable.opencode
     yapfast.packages.${pkgs.system}.yapfast
+    mumble
   ];
 }
