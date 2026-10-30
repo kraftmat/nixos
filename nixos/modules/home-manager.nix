@@ -1,4 +1,4 @@
-{ inputs, hostName, pkgs-stable, ... }:
+{ inputs, hostName, pkgs-unstable, ... }:
 
 {
   home-manager = {
@@ -7,7 +7,7 @@
     backupFileExtension = "backup";
 
     extraSpecialArgs = {
-      inherit inputs hostName pkgs-stable;
+      inherit inputs hostName pkgs-unstable;
       inherit (inputs) dms dms-plugin-registry fjordlauncher yapfast;
       flakePath = "/etc/nixos#${hostName}";
     };

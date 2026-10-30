@@ -41,7 +41,7 @@
         # })
       ];
 
-      pkgs-stable = import nixpkgs-unstable {
+      pkgs-unstable = import nixpkgs-unstable {
         inherit system;
         config.allowUnfree = true;
       };
@@ -53,7 +53,7 @@
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {
-            inherit inputs hostName pkgs-stable;
+            inherit inputs hostName pkgs-unstable;
             inherit (inputs) dms dms-plugin-registry fjordlauncher yapfast;
           };
           modules = [

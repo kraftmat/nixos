@@ -8,8 +8,6 @@
     package = pkgs.valent;
   };
 
-  virtualisation.docker.enable = false;
-
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;

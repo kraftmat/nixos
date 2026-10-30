@@ -5,6 +5,11 @@
 
   networking.hostName = hostName;
 
+  services.zapret-home = {
+    enable    = true;
+    interface = "wlo1";
+  };
+
   # ── Ядро ────────────────────────────────────────────────────────────
   boot.kernelParams = [ "intel_pstate=active" "nvidia.NVreg_DynamicPowerManagement=0x02" ];
   boot.initrd.kernelModules = [ "i915" ];

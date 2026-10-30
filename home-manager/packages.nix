@@ -1,4 +1,4 @@
-{ pkgs, pkgs-stable, inputs, yapfast, ... }:
+{ pkgs, pkgs-unstable, inputs, yapfast, ... }:
 
 {
   home.packages = with pkgs; [
@@ -16,11 +16,8 @@
     bibata-cursors
     morewaita-icon-theme
     gh
-    steam
-    steam-run-free
-    gamemode
-    mangohud
     protonup-qt
+    mangohud
     floorp-bin
     gvfs
     nerd-fonts.jetbrains-mono
@@ -37,11 +34,12 @@
     inter
     go
     gamescope
-    pkgs-stable.strawberry
+    pkgs-unstable.strawberry
     compsize
     valent
-    pkgs-stable.opencode
+    pkgs-unstable.opencode
     yapfast.packages.${pkgs.system}.yapfast
     mumble
+    pkgs-unstable.antigravity-ide
   ];
 }

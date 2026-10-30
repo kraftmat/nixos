@@ -2,18 +2,21 @@
 
 {
   imports = [
-    ./cfg/dms.nix
-    ./cfg/niri.nix
-    ./cfg/qtct.nix
-    ./modules/floorp-matugen.nix
+    ./dms.nix
+    ./niri.nix
+    ./qtct.nix
+    ./cfg/floorp-matugen.nix
 
     ./packages.nix
-    ./apps.nix
     ./desktop.nix
     ./shell.nix
     ./git.nix
     ./terminal.nix
-    ./gaming.nix
+    ./obs.nix
+    ./micro.nix
+    ./equibop.nix
+    ./nixmonitor.nix
+    ./mangohud.nix
   ];
 
   home.enableNixpkgsReleaseCheck = false;

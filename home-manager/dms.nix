@@ -13,7 +13,7 @@
     
       codec = pkgs.runCommandLocal "dms-plugin-codec" { } ''
         mkdir -p $out
-        cp ${../modules/btplugin}/* $out/
+        cp ${./cfg/btplugin}/* $out/
         chmod u+w $out/headset.sh
         sed -i '2i export PATH=${lib.makeBinPath (with pkgs; [ pulseaudio bluez upower gawk gnused gnugrep coreutils ])}:$PATH' $out/headset.sh
         chmod +x $out/headset.sh

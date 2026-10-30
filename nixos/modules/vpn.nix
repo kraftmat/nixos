@@ -1,6 +1,8 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
+  imports = [ ./zapret.nix ];
+
   services.yggdrasil = {
     enable = true;
     settings = {
@@ -13,22 +15,6 @@
         "tls://reticulum.me:12393?key=a3d411280dfc350a4484aa3da5feb0407518c5820cbb011d5620347769b26665"
       ];
       MulticastInterfaces = [ ];
-    };
-  };
-
-  systemd.services.zapret-home = {
-    enable = true;
-    description = "Zapret";
-    after = [ "network.target" ];
-    wantedBy = [ "multi-user.target" ];
-    path = with pkgs; [ iptables nftables gawk procps curl git coreutils gnused gnugrep bash ];
-    serviceConfig = {
-      Type = "simple";
-      User = "root";
-      WorkingDirectory = "/home/kraftmat/zapret-discord-youtube-linux";
-      ExecStart = "${pkgs.bash}/bin/bash service.sh run -c conf.env";
-      Restart = "on-failure";
-      RestartSec = "5s";
     };
   };
 

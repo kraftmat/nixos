@@ -15,10 +15,8 @@
     nixd
     nixfmt
     statix
-    cloudflare-warp
     cloudflared
     compsize
-    valent
     docker-compose
     pulseaudio
   ];

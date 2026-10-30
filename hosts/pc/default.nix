@@ -6,6 +6,11 @@
   networking.hostName = hostName;
   networking.interfaces.enp3s0.wakeOnLan.enable = true;
 
+  services.zapret-home = {
+    enable    = true;
+    interface = "enp4s0";
+  };
+
   # ── Ядро ────────────────────────────────────────────────────────────
   boot.kernelParams = [ "amd_pstate=active" "amdgpu.ppfeaturemask=0xffffffff" ];
   boot.initrd.kernelModules = [ "amdgpu" ];

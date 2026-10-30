@@ -9,7 +9,7 @@
     };
   };
 
-  # ── Cursor ────────────────────────────────────────────────────────────────
+  # ── Cursor не ии ────────────────────────────────────────────────────────────────
   home.pointerCursor = {
     gtk.enable = true;
     x11.enable = true;
@@ -17,4 +17,6 @@
     name = "Bibata-Modern-Classic";
     size = 24;
   };
+
+  services.easyeffects.enable = true;
 }
