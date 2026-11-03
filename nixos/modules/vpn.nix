@@ -5,6 +5,7 @@
 
   services.yggdrasil = {
     enable = true;
+    persistentKeys = true;
     settings = {
       Peers = [
         "tls://45.95.202.21:443"
