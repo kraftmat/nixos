@@ -65,5 +65,30 @@
     home.stateVersion = "26.05";
   };
 
+  # ── podman  ───────────────────────────────────────────────────────────────
+  virtualisation.podman = {
+      enable = true;
+      dockerCompat = true;
+      dockerSocket.enable = true;
+      defaultNetwork.settings.dns_enabled = true;
+      extraPackages = [ pkgs.btrfs-progs ];
+    };
+  
+    virtualisation.containers.storage.settings = {
+      storage = {
+        driver = "btrfs";
+        runroot = "/run/containers/storage";
+        graphroot = "/var/lib/containers/storage";
+      };
+    };
+  
+    environment.systemPackages = with pkgs; [
+      podman-compose
+    ];
+
+ 	#ports
+    networking.firewall.allowedTCPPorts = [ 25565 ];
+    networking.firewall.allowedUDPPorts = [ 24454 ];
+    
   system.stateVersion = "26.05";
 }
