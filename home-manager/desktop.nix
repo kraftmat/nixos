@@ -3,6 +3,14 @@
 {
   xdg.enable = true;
 
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "inode/directory" = "org.gnome.Nautilus.desktop";
+    };
+  };
+
+
   dconf.settings = {
     "org/gnome/nautilus/preferences" = {
       show-image-thumbnails = "always";
