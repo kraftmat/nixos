@@ -8,6 +8,8 @@
     persistentKeys = true;
     settings = {
       Peers = [
+      	"tcp://kem.txlyre.website:1337"
+      	"tcp://mskaeza.i113d.ru:12631"
         "tls://45.95.202.21:443"
         "tls://45.147.200.202:443"
         "tls://yg-vvo.magicum.net:29331"
