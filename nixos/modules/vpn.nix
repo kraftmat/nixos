@@ -8,15 +8,17 @@
     persistentKeys = true;
     settings = {
       Peers = [
-      	"tcp://kem.txlyre.website:1337"
-      	"tcp://mskaeza.i113d.ru:12631"
-        "tls://45.95.202.21:443"
-        "tls://45.147.200.202:443"
-        "tls://yg-vvo.magicum.net:29331"
-        "tls://ygg1.mk16.de:1338?key=0000000087ee9949eeab56bd430ee8f324cad55abf3993ed9b9be63ce693e18a"
-        "tls://ygg2.mk16.de:1338?key=000000d80a2d7b3126ea65c8c08fc751088c491a5cdd47eff11c86fa1e4644ae"
-        "tls://reticulum.me:12393?key=a3d411280dfc350a4484aa3da5feb0407518c5820cbb011d5620347769b26665"
-      ];
+    "tls://ygg1.mk16.de:1338?key=0000000087ee9949eeab56bd430ee8f324cad55abf3993ed9b9be63ce693e18a"
+    "tls://reticulum.me:12393?key=a3d411280dfc350a4484aa3da5feb0407518c5820cbb011d5620347769b26665"
+    "tls://yggdrasil.sunsung.fun:4443"
+    "ws://dc.txlyre.website:13370"
+    "ws://waw01.yggdrasil.hosted-by.skhron.eu:8886?key=030602cee88a761c68f5f14e1dad430f25238a703b69dc382321a38f833035b0"
+    "tcp://kem.txlyre.website:1337"
+    "tcp://mskaeza.i113d.ru:12631"
+    "tls://yg-vvo.magicum.net:29331"
+    "tls://ygg1.mk16.de:1338?key=0000000087ee9949eeab56bd430ee8f324cad55abf3993ed9b9be63ce693e18a"
+    "tls://reticulum.me:12393?key=a3d411280dfc350a4484aa3da5feb0407518c5820cbb011d5620347769b26665"
+     ];
       MulticastInterfaces = [ ];
     };
   };

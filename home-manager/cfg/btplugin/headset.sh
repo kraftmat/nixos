@@ -15,9 +15,9 @@ norm() {
     local c
     c=$(echo "$1" | tr '[:upper:]' '[:lower:]' | tr -d '"[:space:]')
     case "$c" in
-        ldac*) echo ldac ;;
-        aac*)  echo aac ;;
-        *)     echo "$c" ;;
+        ldac*)          echo ldac ;;
+        sbc_xq|sbc-xq)  echo sbc-xq ;;
+        *)              echo "$c" ;;
     esac
 }
 
@@ -98,7 +98,7 @@ case "$CMD" in
         ;;
     toggle)
         current=$(get_codec "$CARD")
-        if [ "$current" = "ldac" ]; then target=aac; else target=ldac; fi
+        if [ "$current" = "ldac" ]; then target=sbc-xq; else target=ldac; fi
 
         ok=0
 
@@ -109,7 +109,7 @@ case "$CMD" in
         fi
 
         if [ "$ok" != 1 ]; then
-            if [ "$target" = "aac" ]; then candidates=(aac AAC); else candidates=(ldac ldac_hq); fi
+            if [ "$target" = "sbc-xq" ]; then candidates=(sbc_xq SBC-XQ); else candidates=(ldac ldac_hq); fi
             for c in "${candidates[@]}"; do
                 pactl send-message "/card/$CARD/bluez" switch-codec "\"$c\"" >/dev/null 2>&1
                 wait_codec "$CARD" "$target" && { ok=1; break; }

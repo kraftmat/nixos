@@ -38,7 +38,9 @@
     compsize
     valent
     pkgs-unstable.opencode
-    yapfast.packages.${pkgs.system}.yapfast
+    (yapfast.packages.${pkgs.system}.default.overrideAttrs (old: {
+      buildFeatures = (old.buildFeatures or [ ]) ++ [ "matrix" ];
+    }))
     mumble
     pkgs-unstable.antigravity-ide
   ];
