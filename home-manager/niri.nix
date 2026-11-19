@@ -320,6 +320,11 @@ xdg.configFile."niri/config.kdl".text = ''
         MouseBack { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
         Shift+MouseBack { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
         Mod+O { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+
+        Mod+S { spawn-sh "niri-sidebar toggle-window"; }
+        Mod+Z { spawn-sh "niri-sidebar toggle-visibility"; }
+        Mod+X { spawn-sh "niri-sidebar flip"; }
+        Mod+D { spawn-sh "niri-sidebar reorder"; }
         
         Mod+Ctrl+R { reset-window-height; }
         Mod+Ctrl+F { expand-column-to-available-width; }

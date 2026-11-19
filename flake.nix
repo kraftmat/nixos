@@ -8,9 +8,7 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    yapfast = {
-      url = "github:yapfast/yapfast";
-    };
+    yapfast.url = "github:yapfast/yapfast";
     nur.url = "github:nix-community/NUR";
     dms = {
       url = "github:AvengeMedia/DankMaterialShell/stable";

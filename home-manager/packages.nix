@@ -40,6 +40,7 @@
     pkgs-unstable.opencode
 	yapfast.packages.${pkgs.system}.default
     mumble
-    pkgs-unstable.antigravity-ide
+    antigravity
+    pkgs-unstable.niri-sidebar
   ];
 }
